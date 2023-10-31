@@ -7,11 +7,41 @@ import 'package:sistema_de_informacion/qr_page.dart';
 import 'package:sistema_de_informacion/src/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:sistema_de_informacion/src/flutter_flow/flutter_flow_widgets.dart';
 import 'src/flutter_flow/flutter_flow_theme.dart';
+import 'src/flutter_flow/flutter_flow_theme.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class FotoWidget extends StatefulWidget {
 
   @override
   _FotoWidgetState createState() => _FotoWidgetState();
+}
+
+final emailController = TextEditingController();
+final messageController = TextEditingController();
+
+Future sendEmail() async{
+  final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+  const serviceId = "service_cebjusa";
+  const templateId = "template_o2kvhsd";
+  const userId = "DkM-oXCqIYVAkEg3E";
+  const to_email = "mauriciogarciam9@gmail.com";
+  final response = await http.post(url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        "service_id": serviceId,
+        "template_id": templateId,
+        "user_id": userId,
+        "template_params":{
+          //"name": nameController.text,
+          //"subject": subjectController.text,
+          "to_email": to_email,
+          "message": messageController.text,
+          "user_email": emailController.text,
+        }
+      })
+  );
+  return print(response.statusCode);
 }
 
 class _FotoWidgetState extends State<FotoWidget> {
@@ -123,7 +153,7 @@ class _FotoWidgetState extends State<FotoWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.90,
+                height: MediaQuery.sizeOf(context).height * 0.85,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
@@ -854,251 +884,50 @@ class _FotoWidgetState extends State<FotoWidget> {
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding:
-                          EdgeInsetsDirectional.fromSTEB(10, 10, 10, 80),
-                          child: Container(
-                            width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.3,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).blanco,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 10, 10, 0),
-                                    child: Text(
-                                      'CONTACTOS',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                        fontFamily: 'Outfit',
-                                        color: Color(0xFF090000),
-                                      ),
-                                    ),
-                                  ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
+                        child: Form(
+                          child: Column(
+                            children: [
+                              Text(
+                                'Contactanos',
+                                style: TextStyle(fontSize: 25),
+
+
+                              ),
+                              Padding(padding: const EdgeInsets.only(bottom: 15)),
+                              TextFormField(
+                                controller: emailController,
+                                decoration: const InputDecoration(
+                                  icon: const Icon(Icons.email),
+                                  hintText: 'Email',
+                                  labelText: 'Email',
                                 ),
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                        AlignmentDirectional(0.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              10, 10, 10, 10),
-                                          child: Container(
-                                            width: 183,
-                                            height: 187,
-                                            decoration: BoxDecoration(
-                                              color:
-                                              FlutterFlowTheme.of(context)
-                                                  .rojo2,
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                  AlignmentDirectional(
-                                                      0.00, 0.00),
-                                                  child: Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        16, 16, 16, 6),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          20),
-                                                      child: Image.asset(
-                                                        'assets/images/usuario.png',
-                                                        width: double.infinity,
-                                                        height:
-                                                        MediaQuery.sizeOf(
-                                                            context)
-                                                            .height *
-                                                            0.104,
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 5, 8, 8),
-                                                  child: Text(
-                                                    'Encargado B\n78541254',
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                        context)
-                                                        .titleLarge
-                                                        .override(
-                                                      fontFamily: 'Outfit',
-                                                      color: FlutterFlowTheme
-                                                          .of(context)
-                                                          .blanco,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                        AlignmentDirectional(0.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              10, 10, 10, 10),
-                                          child: Container(
-                                            width: 183,
-                                            height: 187,
-                                            decoration: BoxDecoration(
-                                              color:
-                                              FlutterFlowTheme.of(context)
-                                                  .rojo2,
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                  AlignmentDirectional(
-                                                      0.00, 0.00),
-                                                  child: Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        16, 16, 16, 6),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          20),
-                                                      child: Image.asset(
-                                                        'assets/images/usuario.png',
-                                                        width: double.infinity,
-                                                        height:
-                                                        MediaQuery.sizeOf(
-                                                            context)
-                                                            .height *
-                                                            0.104,
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 5, 8, 8),
-                                                  child: Text(
-                                                    'Encargado C\n78541254',
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                        context)
-                                                        .titleLarge
-                                                        .override(
-                                                      fontFamily: 'Outfit',
-                                                      color: FlutterFlowTheme
-                                                          .of(context)
-                                                          .blanco,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                        AlignmentDirectional(0.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              10, 10, 10, 10),
-                                          child: Container(
-                                            width: 183,
-                                            height: 187,
-                                            decoration: BoxDecoration(
-                                              color:
-                                              FlutterFlowTheme.of(context)
-                                                  .rojo2,
-                                              borderRadius:
-                                              BorderRadius.circular(20),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                  AlignmentDirectional(
-                                                      0.00, 0.00),
-                                                  child: Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        16, 16, 16, 6),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          20),
-                                                      child: Image.asset(
-                                                        'assets/images/usuario.png',
-                                                        width: double.infinity,
-                                                        height:
-                                                        MediaQuery.sizeOf(
-                                                            context)
-                                                            .height *
-                                                            0.104,
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 5, 8, 8),
-                                                  child: Text(
-                                                    'Encargado A\n78541254',
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                        context)
-                                                        .titleLarge
-                                                        .override(
-                                                      fontFamily: 'Outfit',
-                                                      color: FlutterFlowTheme
-                                                          .of(context)
-                                                          .blanco,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              TextFormField(
+                                controller: messageController,
+                                decoration: const InputDecoration(
+                                  icon: const Icon(Icons.message),
+                                  hintText: 'Message',
+                                  labelText: 'Message',
                                 ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  sendEmail();
+                                },
+                                child: Text(
+                                  "Enviar",
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),

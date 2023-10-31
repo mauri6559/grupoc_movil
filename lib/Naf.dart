@@ -15,8 +15,8 @@ class NafWidget extends StatefulWidget {
   @override
   _NafWidgetState createState() => _NafWidgetState();
 }
-final nameController = TextEditingController();
-final subjectController = TextEditingController();
+//final nameController = TextEditingController();
+//final subjectController = TextEditingController();
 final emailController = TextEditingController();
 final messageController = TextEditingController();
 
@@ -25,6 +25,7 @@ Future sendEmail() async{
   const serviceId = "service_cebjusa";
   const templateId = "template_o2kvhsd";
   const userId = "DkM-oXCqIYVAkEg3E";
+  const to_email = "mauriciogarciam9@gmail.com";
   final response = await http.post(url,
   headers: {'Content-Type': 'application/json'},
     body: json.encode({
@@ -32,8 +33,9 @@ Future sendEmail() async{
       "template_id": templateId,
       "user_id": userId,
       "template_params":{
-        "name": nameController.text,
-        "subject": subjectController.text,
+        //"name": nameController.text,
+        //"subject": subjectController.text,
+        "to_email": to_email,
         "message": messageController.text,
         "user_email": emailController.text,
       }
@@ -986,28 +988,11 @@ class _NafWidgetState extends State<NafWidget> {
                         child: Form(
                           child: Column(
                             children: [
-                              TextFormField(
-                                controller: nameController,
-                                decoration: const InputDecoration(
-                                  icon: const Icon(Icons.account_circle),
-                                  hintText: 'Name',
-                                  labelText: 'Name',
-                                ),
+                              Text(
+                                'Contactanos',
+                                style: TextStyle(fontSize: 25),
                               ),
-                              SizedBox(
-                                height: 25,
-                              ),
-                              TextFormField(
-                                controller: subjectController,
-                                decoration: const InputDecoration(
-                                  icon: const Icon(Icons.subject_rounded),
-                                  hintText: 'Subject',
-                                  labelText: 'Subject',
-                                ),
-                              ),
-                              SizedBox(
-                                height: 25,
-                              ),
+                              Padding(padding: const EdgeInsets.only(bottom: 15)),
                               TextFormField(
                                 controller: emailController,
                                 decoration: const InputDecoration(
