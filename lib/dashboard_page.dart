@@ -16,7 +16,8 @@ class Dashboard extends StatelessWidget {
     "assets/images/job.png",
     "assets/images/about.png",
     //grupo marcelo
-
+    "assets/images/postgrado.png",
+    "assets/images/tramites.png",
     //grupo marvel
 
   ];
@@ -29,6 +30,8 @@ class Dashboard extends StatelessWidget {
     "Consultorio dental",
     "Opcion 5",
     //grupo marcelo
+    "Postgrado",
+    "Trámites",
 
     //grupo marvel
 
