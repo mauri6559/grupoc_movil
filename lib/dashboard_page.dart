@@ -4,6 +4,9 @@ import 'package:sistema_de_informacion/Dental.dart';
 import 'package:sistema_de_informacion/Fotocopiadora.dart';
 import 'package:sistema_de_informacion/Naf.dart';
 import 'package:sistema_de_informacion/Plataforma.dart';
+import 'package:sistema_de_informacion/genesisgroup/cajas.dart';
+import 'package:sistema_de_informacion/genesisgroup/psicologia.dart';
+import 'package:sistema_de_informacion/genesisgroup/medico.dart';
 
 class Dashboard extends StatelessWidget {
   var height, width;
@@ -18,6 +21,9 @@ class Dashboard extends StatelessWidget {
     //grupo marcelo
 
     //grupo marvel
+    "assets/imgenesis/medicine.png",
+    "assets/imgenesis/pago.png",
+    "assets/imgenesis/psychology.png",
 
   ];
 
@@ -31,7 +37,9 @@ class Dashboard extends StatelessWidget {
     //grupo marcelo
 
     //grupo marvel
-
+    "Gabinete Medico",
+    "Cajas",
+    "Area Psicologia",
 
   ];
 
@@ -167,6 +175,21 @@ class Dashboard extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => DentalWidget()),
+                        );
+                      }else if (index == 6) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => medicoWidget()),
+                        );
+                      }else if (index == 7) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => cajasWidget()),
+                        );
+                      }else if (index == 8) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => psicoloWidget()),
                         );
                       }
                     },
