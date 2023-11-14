@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +66,26 @@ class _CanchasWidgetState extends State<CanchasWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 45, 45, 54),
+          iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
+          automaticallyImplyLeading: true,
+          actions: [],
+          flexibleSpace: FlexibleSpaceBar(
+            background: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(0),
+                child: Image.asset(
+                  'assets/imgenesis/banner.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          toolbarHeight: MediaQuery.sizeOf(context).height * 0.13,
+          elevation: 115,
+        ),
         bottomNavigationBar: BottomNavigationBar(
           unselectedFontSize: 0,
           selectedFontSize: 0,
@@ -89,67 +111,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.05,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).rojouni,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    FlutterFlowIconButton(
-                      borderColor: FlutterFlowTheme.of(context).rojo2,
-                      borderRadius: 20,
-                      borderWidth: 1,
-                      buttonSize: 40,
-                      fillColor: FlutterFlowTheme.of(context).rosa,
-                      icon: Icon(
-                        Icons.arrow_back_ios_sharp,
-                        color: FlutterFlowTheme.of(context).blanco,
-                        size: 24,
-                      ),
-                      onPressed: () async {
-                        //context.pushNamed('HomePage');
-                      },
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.75,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojouni,
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'Canchas Univalle',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                              fontFamily: 'Outfit',
-                              color: FlutterFlowTheme.of(context).blanco,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 3, 15, 3),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          'assets/images/usuario.png',
-                          width: MediaQuery.sizeOf(context).width * 0.1,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
               Container(
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).height * 0.85,
@@ -160,58 +122,32 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.251,
-                        decoration: BoxDecoration(
-                          color:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Container(
-                                width: double.infinity,
-                                height: 110,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).rojo2,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(0),
-                                    bottomRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(0),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 10),
+                              child: Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: Color(0xFFB22A2A),
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    'assets/images/canchasbannerfoto.png',
+                                    width: double.maxFinite,
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(1.20, -0.10),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.asset(
-                                  'assets/images/pelota1.png',
-                                  width: 218,
-                                  height: 216,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(-0.84, -0.01),
-                              child: Text(
-                                'Te damos la bienvenida a \nnuestras canchas',
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineLarge
-                                    .override(
-                                  fontFamily: 'Outfit',
-                                  color:
-                                  FlutterFlowTheme.of(context).blanco,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.00, 0.00),
@@ -219,7 +155,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                           width: double.infinity,
                           height: MediaQuery.sizeOf(context).height * 0.2,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).salmon,
+                            color: FlutterFlowTheme.of(context).blanco,
                           ),
                           child: Align(
                             alignment: AlignmentDirectional(0.00, 0.00),
@@ -258,7 +194,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                           width: double.infinity,
                           height: MediaQuery.sizeOf(context).height * 0.2,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).rosa,
+                            color: Colors.white,
                           ),
                           child: Align(
                             alignment: AlignmentDirectional(0.00, 0.00),
@@ -273,8 +209,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                                         .headlineLarge
                                         .override(
                                       fontFamily: 'Outfit',
-                                      color:
-                                      FlutterFlowTheme.of(context).info,
+                                      color:Colors.black,
                                     ),
                                   ),
                                 ),
@@ -284,14 +219,13 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15, 15, 15, 15),
                                     child: Text(
-                                      'Para poder reservar una de las canchas tienes que ser alumno de la univalle y portar tu credencial',
+                                      'Para hacer la reservación de la cancha deberas presentar una carta con los nombres de las personas que ocuparan la cancha, el horario en el que se ocupará la cancha y que deporte se jugará',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                         fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .info,
+                                        color: Colors.black,
                                       ),
                                     ),
                                   ),
@@ -722,7 +656,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.3,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).salmon,
+                          color: FlutterFlowTheme.of(context).blanco,
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -801,7 +735,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                           EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.3,
+                            height: MediaQuery.sizeOf(context).height * 0.35,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).rojo2,
                               borderRadius: BorderRadius.circular(20),
@@ -842,9 +776,9 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'PISO NRO 4 TORRE A',
+                                      'Avenida Tejada Sorzano, esquina calle Canada',
                                       style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
+                                          .headlineSmall
                                           .override(
                                         fontFamily: 'Outfit',
                                         color: FlutterFlowTheme.of(context)
