@@ -48,6 +48,10 @@ class _qrPageState extends State<qrPage> {
                 SizedBox(height: 16),
                 if (result?.code != null)
                   ElevatedButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 122, 0, 49), // Cambia aquí el color del botón
+                      // Otros estilos opcionales del botón, como padding, bordes, etc.
+                    ),
                     onPressed: () {
                       final String url = result!.code!;
                       final Uri uri = Uri.parse(url);
@@ -115,6 +119,10 @@ class _qrPageState extends State<qrPage> {
                   Navigator.of(context).pop();
                 },
                 child: Text('OK'),
+                style: TextButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 122, 0, 49), // Cambia aquí el color del botón
+                  // Otros estilos opcionales del botón, como padding, bordes, etc.
+                ),
               ),
             ],
           );

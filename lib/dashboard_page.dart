@@ -15,35 +15,35 @@ class Dashboard extends StatelessWidget {
   var height, width;
 
   List imgData = [
-    "assets/images/mcqs.png",
-    "assets/images/quiz.png",
-    "assets/images/pastpapers.png",
-    "assets/images/pdf.png",
-    "assets/images/job.png",
+    "assets/images/movilnaf.png",
+    "assets/images/movilplataforma.png",
+    "assets/images/movildeportes.png",
+    "assets/images/movilfotoco.png",
+    "assets/images/movilodonto.png",
 
     //grupo marvel
-    "assets/imgenesis/medicine.png",
-    "assets/imgenesis/pago.png",
-    "assets/imgenesis/psychology.png",
+    "assets/images/movilgabinete.png",
+    "assets/images/movilcajas.png",
+    "assets/images/movilpsicologia.jpg",
 
     //grupo marcelo y mauri
-    "assets/images/postgrado.png",
-    "assets/images/tramites.png",
-    "assets/MauImagenes/lol.png",
-    "assets/MauImagenes/Biblioteca.png",
+    "assets/images/movilpostgrado.png",
+    "assets/images/moviltramites.png",
+    "assets/images/movilcafeteria.png",
+    "assets/images/movilbiblioteca.png",
     //"assets/images/tramites.png",
   ];
 
   List titles = [
     "NAF",
     "Plataforma de atencion",
-    "Canchas",
+    "Deportes",
     "Fotocopiadora",
-    "Consultorio dental",
+    "Clinica Odontológica",
     //grupo marvel
     "Gabinete Medico",
     "Cajas",
-    "Area Psicologia",
+    "Psicologia",
     //grupo marcelo
     "Postgrado",
     "Trámites",
@@ -57,7 +57,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    height = MediaQuery.of(context).size.height;
+    height = MediaQuery.of(context).size.height-60;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
