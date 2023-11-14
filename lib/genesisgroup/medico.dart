@@ -3,12 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:sistema_de_informacion/src/flutter_flow/flutter_flow_theme.dart';
 import 'package:sistema_de_informacion/dashboard_page.dart';
 import 'package:sistema_de_informacion/qr_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class medicoWidget extends StatefulWidget {
   const medicoWidget({super.key});
 
   @override
   State<medicoWidget> createState() => _medicoWidgetState();
+}
+
+final emailController = TextEditingController();
+final messageController = TextEditingController();
+
+Future sendEmail() async{
+  final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+  const serviceId = "service_cebjusa";
+  const templateId = "template_o2kvhsd";
+  const userId = "DkM-oXCqIYVAkEg3E";
+  const to_email = "mauriciogarciam9@gmail.com";
+  final response = await http.post(url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        "service_id": serviceId,
+        "template_id": templateId,
+        "user_id": userId,
+        "template_params":{
+          //"name": nameController.text,
+          //"subject": subjectController.text,
+          "to_email": to_email,
+          "message": messageController.text,
+          "user_email": emailController.text,
+        }
+      })
+  );
+  return print(response.statusCode);
 }
 
 class _medicoWidgetState extends State<medicoWidget> {
@@ -67,7 +96,7 @@ class _medicoWidgetState extends State<medicoWidget> {
             ],
           ),
           key: scaffoldKey,
-          backgroundColor: Color.fromARGB(255, 161, 0, 71),
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
           body: SingleChildScrollView(
             child: SafeArea(
               top: true,
@@ -90,7 +119,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/medico.jpg',
+                                'assets/imgenesis/medicofotor.jpg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -105,7 +134,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                     width: double.infinity,
                     height: MediaQuery.sizeOf(context).height * 0.3,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 161, 0, 71),
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -115,7 +144,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                           child: Text(
                             'SERVICIOS',
                             style: TextStyle(
-                              color: Colors.white, // Cambia el color a azul (puedes usar cualquier otro color)
+                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
                               fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
                             ),
@@ -156,7 +185,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                     width: double.infinity,
                     height: MediaQuery.sizeOf(context).height * 0.3,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 161, 0, 71),
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -166,7 +195,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                           child: Text(
                             'SOBRE NOSOTROS',
                             style: TextStyle(
-                              color: Colors.white, // Cambia el color a azul (puedes usar cualquier otro color)
+                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
                               fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
                             ),
@@ -199,7 +228,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                     width: double.infinity,
                     height: MediaQuery.sizeOf(context).height * 0.3,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 161, 0, 71),
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -452,6 +481,51 @@ class _medicoWidgetState extends State<medicoWidget> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
+                    child: Form(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Contactanos',
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          Padding(padding: const EdgeInsets.only(bottom: 15)),
+                          TextFormField(
+                            controller: emailController,
+                            decoration: const InputDecoration(
+                              icon: const Icon(Icons.email),
+                              hintText: 'Email',
+                              labelText: 'Email',
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          TextFormField(
+                            controller: messageController,
+                            decoration: const InputDecoration(
+                              icon: const Icon(Icons.message),
+                              hintText: 'Message',
+                              labelText: 'Message',
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              sendEmail();
+                            },
+                            child: Text(
+                              "Enviar",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -566,6 +640,7 @@ class ServiceDetailsScreen extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 161, 0, 71),
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height, // Ajusta la altura para que ocupe toda la pantalla
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
