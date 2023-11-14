@@ -74,7 +74,7 @@ class _cajasWidgetState extends State<cajasWidget> {
           ],
         ),
         key: scaffoldKey,
-        backgroundColor: Color.fromARGB(255, 161, 0, 71),
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: SafeArea(
             top: true,
