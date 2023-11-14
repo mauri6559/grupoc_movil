@@ -44,6 +44,8 @@ Future sendEmail() async{
 }
 
 class _cajasWidgetState extends State<cajasWidget> {
+
+
   List pages = [
     Dashboard(),
     qrPage()
@@ -59,6 +61,8 @@ class _cajasWidgetState extends State<cajasWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return GestureDetector(
       child: Scaffold(
         appBar: AppBar(
@@ -456,8 +460,12 @@ class _cajasWidgetState extends State<cajasWidget> {
         ),
       )
     );
+
+
   }
 }
+
+
 //aca creo todos los cards para poder personalizarlo de manera individual
 Widget buildServiceCard(BuildContext context, String imageUrl, String serviceName, String serviceDetails) {
   return Align(
@@ -526,6 +534,8 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
     ),
   );
 }
+
+
 //crea una pantalla nueva para mostrar informacion mas a detalle de los cards personalizados
 class ServiceDetailsScreen extends StatelessWidget {
   final String imageUrl;
