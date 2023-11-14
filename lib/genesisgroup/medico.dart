@@ -435,7 +435,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10, 10, 10, 0),
                                 child: Text(
-                                  'PISO NRO 1 y 2  TORRE B',
+                                  'PISO NRO 1 TORRE A',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(

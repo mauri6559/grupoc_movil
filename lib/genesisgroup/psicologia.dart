@@ -243,45 +243,6 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                           ),
                                         ),
                                       ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          'Sabado',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).titleLarge.override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '8:00 AM  -',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '12:00 PM',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
