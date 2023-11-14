@@ -83,35 +83,35 @@ class Dashboard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InkWell(
+                        /*InkWell(
                           onTap: () {},
                           child: Icon(
                             Icons.sort,
                             color: Colors.white,
                             size: 40,
                           ),
-                        ),
-                        Container(
+                        ),*/
+                        /*Container(
                           height: 50,
                           width: 50,
 
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color:Colors.white,
-                            image: DecorationImage(
+                            /*image: DecorationImage(
                               image: AssetImage(
                                 "assets/images/info.png",
                               )
-                            )
+                            )*/
                           ),
 
-                        )
+                        )*/
                       ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top:20,
+                        top:50,
                         left: 30,
                     ),
                     child: Column(
