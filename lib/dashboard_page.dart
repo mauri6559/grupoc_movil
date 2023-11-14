@@ -17,15 +17,18 @@ class Dashboard extends StatelessWidget {
     "assets/images/pastpapers.png",
     "assets/images/pdf.png",
     "assets/images/job.png",
-    "assets/images/about.png",
-    //grupo marcelo
-    "assets/images/postgrado.png",
-    "assets/images/tramites.png",
+
     //grupo marvel
     "assets/imgenesis/medicine.png",
     "assets/imgenesis/pago.png",
     "assets/imgenesis/psychology.png",
 
+    //grupo marcelo y mauri
+    "assets/images/postgrado.png",
+    "assets/images/tramites.png",
+    "assets/images/tramites.png",
+    "assets/images/tramites.png",
+    "assets/images/tramites.png",
   ];
 
   List titles = [
@@ -34,15 +37,18 @@ class Dashboard extends StatelessWidget {
     "Canchas",
     "Fotocopiadora",
     "Consultorio dental",
-    "Opcion 5",
-    //grupo marcelo
-    "Postgrado",
-    "Trámites",
-
     //grupo marvel
     "Gabinete Medico",
     "Cajas",
     "Area Psicologia",
+    //grupo marcelo
+    "Postgrado",
+    "Trámites",
+    "Trámites",
+    "Trámites",
+    "Trámites",
+
+
 
   ];
 
@@ -179,17 +185,17 @@ class Dashboard extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => DentalWidget()),
                         );
-                      }else if (index == 6) {
+                      }else if (index == 5) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => medicoWidget()),
                         );
-                      }else if (index == 7) {
+                      }else if (index == 6) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => cajasWidget()),
                         );
-                      }else if (index == 8) {
+                      }else if (index == 7) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => psicoloWidget()),
