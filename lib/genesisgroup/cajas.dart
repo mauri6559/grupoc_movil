@@ -572,59 +572,62 @@ class ServiceDetailsScreen extends StatelessWidget {
         elevation: 115,
       ),
       backgroundColor: Color.fromARGB(255, 161, 0, 71),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 161, 0, 71),
-              Color.fromARGB(255, 45, 45, 54),
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height, // Ajusta la altura para que ocupe toda la pantalla
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(255, 161, 0, 71),
+                Color.fromARGB(255, 45, 45, 54),
+              ],
+            ),
+          ),
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 3,
+                      blurRadius: 7,
+                    ),
+                  ],
+                ),
+                child: Image.asset(
+                  imageUrl,
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(height: 16),
+              Text(
+                serviceName,
+                style: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                serviceDetails,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white,
+                ),
+              ),
+              // Agrega más contenido de detalles si es necesario
             ],
           ),
-        ),
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                  ),
-                ],
-              ),
-              child: Image.asset(
-                imageUrl,
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.5,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              serviceName,
-              style: TextStyle(
-                fontSize: 24.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              serviceDetails,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
-            ),
-            // Agrega más contenido de detalles si es necesario
-          ],
         ),
       ),
     );
