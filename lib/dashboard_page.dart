@@ -4,6 +4,8 @@ import 'package:sistema_de_informacion/Dental.dart';
 import 'package:sistema_de_informacion/Fotocopiadora.dart';
 import 'package:sistema_de_informacion/Naf.dart';
 import 'package:sistema_de_informacion/Plataforma.dart';
+import 'package:sistema_de_informacion/codecrafters/postgrado.dart';
+import 'package:sistema_de_informacion/codecrafters/tramites.dart';
 import 'package:sistema_de_informacion/genesisgroup/cajas.dart';
 import 'package:sistema_de_informacion/genesisgroup/psicologia.dart';
 import 'package:sistema_de_informacion/genesisgroup/medico.dart';
@@ -199,6 +201,16 @@ class Dashboard extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => psicoloWidget()),
+                        );
+                      }else if (index == 8) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => postgradoWidget()),
+                        );
+                      }else if (index == 9) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => tramitesWidget()),
                         );
                       }
                     },
