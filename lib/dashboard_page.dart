@@ -19,7 +19,8 @@ class Dashboard extends StatelessWidget {
     "assets/images/job.png",
     "assets/images/about.png",
     //grupo marcelo
-
+    "assets/images/postgrado.png",
+    "assets/images/tramites.png",
     //grupo marvel
     "assets/imgenesis/medicine.png",
     "assets/imgenesis/pago.png",
@@ -35,6 +36,8 @@ class Dashboard extends StatelessWidget {
     "Consultorio dental",
     "Opcion 5",
     //grupo marcelo
+    "Postgrado",
+    "Trámites",
 
     //grupo marvel
     "Gabinete Medico",
