@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:sistema_de_informacion/Canchas.dart';
 import 'package:sistema_de_informacion/Dental.dart';
 import 'package:sistema_de_informacion/Fotocopiadora.dart';
+import 'package:sistema_de_informacion/Mau/Cafeteria.dart';
 import 'package:sistema_de_informacion/Naf.dart';
 import 'package:sistema_de_informacion/Plataforma.dart';
+import 'package:sistema_de_informacion/codecrafters/postgrado.dart';
+import 'package:sistema_de_informacion/codecrafters/tramites.dart';
 import 'package:sistema_de_informacion/genesisgroup/cajas.dart';
 import 'package:sistema_de_informacion/genesisgroup/psicologia.dart';
 import 'package:sistema_de_informacion/genesisgroup/medico.dart';
@@ -26,9 +29,9 @@ class Dashboard extends StatelessWidget {
     //grupo marcelo y mauri
     "assets/images/postgrado.png",
     "assets/images/tramites.png",
-    "assets/images/tramites.png",
-    "assets/images/tramites.png",
-    "assets/images/tramites.png",
+    "assets/MauImagenes/lol.png",
+    "assets/MauImagenes/Biblioteca.png",
+    //"assets/images/tramites.png",
   ];
 
   List titles = [
@@ -44,9 +47,9 @@ class Dashboard extends StatelessWidget {
     //grupo marcelo
     "Postgrado",
     "Trámites",
-    "Trámites",
-    "Trámites",
-    "Trámites",
+    "Cafeteria",
+    "Biblioteca",
+    //"Trámites",
 
 
 
@@ -200,7 +203,28 @@ class Dashboard extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => psicoloWidget()),
                         );
-                      }
+                      }else if (index == 8) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => postgradoWidget()),
+                        );
+                      }else if (index == 9) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => tramitesWidget()),
+                        );
+                      }else if (index == 10) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CafeteriaWidget()),
+                        );
+                      }//else if (index == 11) {
+                        //Navigator.push(
+                        //  context,
+                         // MaterialPageRoute(builder: (context) => BibliotecaWidget()),
+                        //);
+                      //}
+
                     },
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
