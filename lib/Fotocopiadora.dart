@@ -572,6 +572,9 @@ Productos:
                                 onPressed: () {
                                   sendEmail();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: FlutterFlowTheme.of(context).rojo2,
+                                ),
                                 child: Text(
                                   "Enviar",
                                   style: TextStyle(fontSize: 20),
