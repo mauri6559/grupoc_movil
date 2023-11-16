@@ -11,12 +11,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class BibliotecaWidget extends StatefulWidget {
-  const BibliotecaWidget({Key? key}) : super(key: key);
+class DireccionCarreraWidget extends StatefulWidget {
+  const DireccionCarreraWidget({Key? key}) : super(key: key);
 
   @override
-  _BibliotecaWidgetState createState() => _BibliotecaWidgetState();
+  State<DireccionCarreraWidget> createState() => _DireccionCarreraWidgetState();
 }
+
 final emailController = TextEditingController();
 final messageController = TextEditingController();
 
@@ -43,7 +44,7 @@ Future sendEmail() async{
   );
   return print(response.statusCode);
 }
-class _BibliotecaWidgetState extends State<BibliotecaWidget> {
+class _DireccionCarreraWidgetState extends State<DireccionCarreraWidget> {
   List pages = [
     Dashboard(),
     qrPage(),
@@ -122,7 +123,7 @@ class _BibliotecaWidgetState extends State<BibliotecaWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/MauImagenes/bibliot.jpg',
+                                'assets/MauImagenes/direc.jpg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -160,11 +161,69 @@ class _BibliotecaWidgetState extends State<BibliotecaWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/MauImagenes/reserva.jpg',
-                                  'Biblioteca',
-                                  '''⨀ REQUISITOS PARA EL PRESTAMO DE LIBROS.
-                                                              
-⨀ Si deseas solicitar préstamo de libros en la biblioteca, es necesario utilizar tu credencial estudiantil de la Universidad del Valle. La credencial estudiantil es tu identificación oficial como estudiante de la universidad y te permite acceder a los servicios bibliotecarios. Para obtener un libro, simplemente presenta tu credencial en el mostrador de préstamo y el personal de la biblioteca te asistirá en el proceso. Recuerda que esta credencial es fundamental para aprovechar al máximo los recursos académicos que ofrece la biblioteca de nuestra institución.'''
+                                  'assets/MauImagenes/salud.jpg',
+                                  'Facultad De Ciencias De La Salud',
+                                  '''⨀ Aquí se forman futuros médicos y profesionales de la salud. 
+                                                             
+⨀ Medicina.
+⨀ Odontología.
+⨀ Bioquímica y Farmacia.
+⨀ Fisioterapia y Kinesiología.
+⨀ Nutrición y Dietética.
+'''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/MauImagenes/empresarial.png',
+                                  'Facultad De Ciencias Empresariales Y Sociales',
+                                  '''⨀ Esta facultad se enfoca en negocios y leyes. 
+
+⨀ Ing. Comercial. 
+⨀ Ing. en Comercio Internacional.
+⨀ Derecho y Ciencias Jurídicas. 
+⨀ Comunicación y Medios Digitales 
+⨀ Administración de Empresas. 
+⨀ Contaduría Pública.
+⨀ Psicología. 
+⨀ Financiera y de Riesgos 
+⨀ Ing. en Ciencia de Datos e Inteligencia de Negocios '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/MauImagenes/informatica.jpg',
+                                  'Facultad De Informática Y Electrónica',
+                                  '''⨀ Aquí se aprende sobre computadoras y tecnología.. 
+⨀ Ing. Biomédica. 
+⨀ Ing. Electrónica.
+⨀ Ing. en Telecomunicaciones. 
+⨀ Email and phone support. 
+⨀ Ing. de Sistemas Informáticos.'''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/MauImagenes/arqui.jpg',
+                                  'Facultad De Arquitectura, Urbanismo Y Diseño',
+                                  '''⨀ Para quienes diseñan edificios y objetos.. 
+
+⨀ Arquitectura y Urbanismo 
+⨀ Diseño de Interiores y Paisajismo
+⨀ Diseño Gráfico y Comunicación Visual. 
+⨀ Facultad de Gastronomía y Turismo. 
+⨀ Lic. en Gastronomía. 
+⨀ Lic. en Turismo y Hotelería.'''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/MauImagenes/tecno.jpg',
+                                  'Facultad De Tecnologia',
+                                  '''⨀ En esta facultad se estudia cómo hacer funcionar las cosas.. 
+
+⨀ Ing. Civil. 
+⨀ Ing. Industrial y de Sistemas.
+⨀ Diseño Gráfico y Comunicación Visual. 
+⨀ Facultad de Gastronomía y Turismo. 
+⨀ Lic. en Gastronomía. 
+⨀ Ing. Industrial.'''
                               ),
                             ],
                           ),

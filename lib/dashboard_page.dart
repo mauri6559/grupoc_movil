@@ -3,6 +3,8 @@ import 'package:sistema_de_informacion/Canchas.dart';
 import 'package:sistema_de_informacion/Dental.dart';
 import 'package:sistema_de_informacion/Fotocopiadora.dart';
 import 'package:sistema_de_informacion/Mau/Cafeteria.dart';
+import 'package:sistema_de_informacion/Mau/Biblioteca.dart';
+import 'package:sistema_de_informacion/Mau/DireccionCarrera.dart';
 import 'package:sistema_de_informacion/Naf.dart';
 import 'package:sistema_de_informacion/Plataforma.dart';
 import 'package:sistema_de_informacion/codecrafters/postgrado.dart';
@@ -31,7 +33,7 @@ class Dashboard extends StatelessWidget {
     "assets/images/moviltramites.png",
     "assets/images/movilcafeteria.png",
     "assets/images/movilbiblioteca.png",
-    //"assets/images/tramites.png",
+    "assets/MauImagenes/ddc.png",
   ];
 
   List titles = [
@@ -49,7 +51,7 @@ class Dashboard extends StatelessWidget {
     "Trámites",
     "Cafeteria",
     "Biblioteca",
-    //"Trámites",
+    "Dirección de carreras",
 
 
 
@@ -218,12 +220,17 @@ class Dashboard extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => CafeteriaWidget()),
                         );
-                      }//else if (index == 11) {
-                        //Navigator.push(
-                        //  context,
-                         // MaterialPageRoute(builder: (context) => BibliotecaWidget()),
-                        //);
-                      //}
+                      }else if (index == 11) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BibliotecaWidget()),
+                        );
+                      }else if (index == 12) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DireccionCarreraWidget()),
+                        );
+                      }
 
                     },
                     child: Container(
