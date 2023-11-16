@@ -170,22 +170,22 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/doctorado01.png',
-                                  'Colegiatura',
+                                  'Doctorado',
                                   '''⨀ Datos del estudiante.
                                 
 ⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
 
-⨀ Indica la mensualidad o el semestre que desea cancelar.'''
+⨀ Precios a canselar.'''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/doctorado02.png',
-                                  'Trámites',
+                                  'Doctorado',
                                   '''⨀ Datos del estudiante. 
 
-⨀ Formulario de solvencia emitido por el área de trámites. 
+⨀ Formulario. 
 
-⨀ Indica la mensualidad o el semestre que desea cancelar. '''
+⨀ Precios a cancelar. '''
                               ),
                             ],
                           ),
@@ -228,12 +228,12 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/maestrialpz01.png',
-                                  'Colegiatura',
+                                  'Maestria',
                                   '''⨀ Datos del estudiante.
                                 
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
+⨀ Informacion.
 
-⨀ Indica la mensualidad o el semestre que desea cancelar.'''
+⨀ Precio a cancelar.'''
                               ),
                             ],
                           ),
@@ -274,77 +274,77 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz01.png',
-                                  'Colegiatura',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante.
                                 
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
+⨀ Informacion.
 
-⨀ Indica la mensualidad o el semestre que desea cancelar.'''
+⨀ Precio a cancelar.'''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz02.png',
-                                  'Trámites',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. 
 
-⨀ Formulario de solvencia emitido por el área de trámites. 
+⨀ Informacion. 
 
-⨀ Indica la mensualidad o el semestre que desea cancelar. '''
+⨀ Precio a cancelar. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz03.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz04.png',
-                                  'Cheques',
-                                  '''⨀ Carnet de identidad - indispensable. 
+                                  'Diplomado',
+                                  '''⨀ Datos del estudiante. 
 
-⨀ En caso de terceros se requiere una carta autorizada. '''
+⨀ Precio a pagar. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz05.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz06.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz07.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz08.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz09.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz10.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/diplomadolpz11.png',
-                                  'Deudas',
+                                  'Diplomado',
                                   '''⨀ Datos del estudiante. '''
                               ),
                             ],
