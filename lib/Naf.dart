@@ -65,6 +65,7 @@ class _NafWidgetState extends State<NafWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
+
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 45, 45, 54),
           iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
@@ -112,13 +113,12 @@ class _NafWidgetState extends State<NafWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-
-
+              
               Container(
                 width: double.infinity,
                 height: MediaQuery
                     .sizeOf(context)
-                    .height * 0.85,
+                    .height * 0.77,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme
                       .of(context)

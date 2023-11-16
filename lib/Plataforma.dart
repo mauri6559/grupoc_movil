@@ -113,7 +113,7 @@ class _PlataformaWidgetState extends State<PlataformaWidget> {
 
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.85,
+                height: MediaQuery.sizeOf(context).height * 0.77,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),

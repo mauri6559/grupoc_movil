@@ -113,7 +113,7 @@ class _FotoWidgetState extends State<FotoWidget> {
 
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.85,
+                height: MediaQuery.sizeOf(context).height * 0.77,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
