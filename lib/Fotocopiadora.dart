@@ -216,7 +216,7 @@ class _FotoWidgetState extends State<FotoWidget> {
                                   children: [
                                     buildServiceCard(
                                         context,
-                                        'assets/images/fotocopi.jpg',
+                                        'assets/images/fotocoFinal.jpg',
                                         'Fotocopias',
                                         '''
 Saca fotocopias de tus documentos en un instante
@@ -251,7 +251,7 @@ Servicios:
                                     ),
                                     buildServiceCard(
                                         context,
-                                        'assets/images/escanear.jpg',
+                                        'assets/images/scann.png',
                                         'Escaneo',
                                         '''
 Escanea tus documentos y el encargado te los pasará a tu celular o computadora
@@ -703,6 +703,7 @@ class ServiceDetailsScreen extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 161, 0, 71),
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height * 1.2, // Ajusta la altura para que ocupe toda la pantalla
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -715,7 +716,7 @@ class ServiceDetailsScreen extends StatelessWidget {
           ),
           padding: EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
