@@ -164,7 +164,7 @@ class _FotoWidgetState extends State<FotoWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Text(
-                                    'INFORMACION',
+                                    'INFORMACIÓN',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge,
                                   ),
@@ -193,7 +193,7 @@ class _FotoWidgetState extends State<FotoWidget> {
                           width: double.infinity,
                           height: MediaQuery.sizeOf(context).height * 0.3,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 245, 245, 245),
+                            color: Colors.white,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -489,7 +489,7 @@ Productos:
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'UBICACION',
+                                      'UBICACIÓN',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -518,7 +518,7 @@ Productos:
                                         10, 10, 10, 0),
                                     child: Text(
 
-                                      'Subsuelo - torre innovacion',
+                                      'Subsuelo - torre innovación',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
@@ -540,7 +540,7 @@ Productos:
                           child: Column(
                             children: [
                               Text(
-                                'Contactanos',
+                                'Contáctanos',
                                 style: TextStyle(fontSize: 25),
 
 

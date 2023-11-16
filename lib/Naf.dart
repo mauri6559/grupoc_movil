@@ -173,7 +173,7 @@ class _NafWidgetState extends State<NafWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Text(
-                                    'INFORMACION',
+                                    'INFORMACIÓN',
                                     style: FlutterFlowTheme
                                         .of(context)
                                         .headlineLarge,
@@ -581,7 +581,7 @@ Mantente al tanto de las facilidades de pago que existen
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'UBICACION',
+                                      'UBICACIÓN',
                                       style: FlutterFlowTheme
                                           .of(context)
                                           .headlineLarge
@@ -636,7 +636,7 @@ Mantente al tanto de las facilidades de pago que existen
                           child: Column(
                             children: [
                               Text(
-                                'Contactanos',
+                                'Contáctanos',
                                 style: TextStyle(fontSize: 25),
                               ),
                               Padding(padding: const EdgeInsets.only(bottom: 15)),

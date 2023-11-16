@@ -164,7 +164,7 @@ class _PlataformaWidgetState extends State<PlataformaWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Text(
-                                    'INFORMACION',
+                                    'INFORMACIÓN',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge,
                                   ),
@@ -485,7 +485,7 @@ Servicios
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'UBICACION',
+                                      'UBICACIÓN',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -512,7 +512,7 @@ Servicios
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'Piso 1 torre innovacion',
+                                      'Piso 1 torre innovación',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -534,7 +534,7 @@ Servicios
                           child: Column(
                             children: [
                               Text(
-                                'Contactanos',
+                                'Contáctanos',
                                 style: TextStyle(fontSize: 25),
                               ),
                               Padding(padding: const EdgeInsets.only(bottom: 15)),

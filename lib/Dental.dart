@@ -166,7 +166,7 @@ class _DentalWidgetState extends State<DentalWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Text(
-                                    'INFORMACION',
+                                    'INFORMACIÓN',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge,
                                   ),
@@ -514,7 +514,7 @@ Requisitos:
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'UBICACION',
+                                      'UBICACIÓN',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -564,7 +564,7 @@ Requisitos:
                           child: Column(
                             children: [
                               Text(
-                                'Contactanos',
+                                'Contáctanos',
                                 style: TextStyle(fontSize: 25),
                               ),
                               Padding(padding: const EdgeInsets.only(bottom: 15)),

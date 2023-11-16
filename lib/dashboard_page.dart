@@ -38,14 +38,14 @@ class Dashboard extends StatelessWidget {
 
   List titles = [
     "NAF",
-    "Plataforma de atencion",
+    "Plataforma de atención",
     "Deportes",
     "Fotocopiadora",
-    "Clinica Odontológica",
+    "Clínica Odontológica",
     //grupo marvel
     "Gabinete Medico",
     "Cajas",
-    "Psicologia",
+    "Psicología",
     //grupo marcelo
     "Postgrado",
     "Trámites",

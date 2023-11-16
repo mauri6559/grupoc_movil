@@ -155,7 +155,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                           width: double.infinity,
                           height: MediaQuery.sizeOf(context).height * 0.2,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).blanco,
+                            color: Colors.white,
                           ),
                           child: Align(
                             alignment: AlignmentDirectional(0.00, 0.00),
@@ -165,7 +165,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Text(
-                                    'INFORMACION',
+                                    'INFORMACIÓN',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge,
                                   ),
@@ -239,7 +239,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.3,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).blanco,
+                          color: Colors.white,
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -656,7 +656,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.3,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).blanco,
+                          color: Colors.white,
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -749,7 +749,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 10, 10, 0),
                                     child: Text(
-                                      'UBICACION',
+                                      'UBICACIÓN',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -798,7 +798,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                           child: Column(
                             children: [
                               Text(
-                                'Contactanos',
+                                'Contáctanos',
                                 style: TextStyle(fontSize: 25),
                               ),
                               Padding(padding: const EdgeInsets.only(bottom: 15)),
