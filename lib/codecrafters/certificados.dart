@@ -8,11 +8,12 @@ import 'package:flutter_image/flutter_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class postgradoWidget extends StatefulWidget {
-  const postgradoWidget({super.key});
+
+class CertificadosWidget extends StatefulWidget {
+  const CertificadosWidget({super.key});
 
   @override
-  State<postgradoWidget> createState() => _postgradoWidgetState();
+  State<CertificadosWidget> createState() => _CertificadosWidgetState();
 }
 
 final emailController = TextEditingController();
@@ -42,8 +43,7 @@ Future sendEmail() async{
   return print(response.statusCode);
 }
 
-class _postgradoWidgetState extends State<postgradoWidget> {
-
+class _CertificadosWidgetState extends State<CertificadosWidget> {
 
   List pages = [
     Dashboard(),
@@ -58,10 +58,8 @@ class _postgradoWidgetState extends State<postgradoWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
-
   @override
   Widget build(BuildContext context) {
-
 
     return GestureDetector(
 
@@ -131,7 +129,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/postgrado.jpg',
+                                'assets/imgenesis/certificados.jpeg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -160,7 +158,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'DOCTORADOS',
+                            'CERTIFICADOS',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -175,23 +173,140 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
+                                  'assets/imgenesis/cer01.jpeg',
+                                  'Certificado De Estudiante Regular',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada)..
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución).
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones.'''
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  'assets/imgenesis/cer02.jpeg',
+                                  'Certificado De Culminación De Plan De Estudios',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).. 
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución).. 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer03.jpeg',
+                                  'Certificado De Vencimiento De Plan De Estudios',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada)... 
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución).. 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer04.jpeg',
+                                  'Certificado De Puntaje',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución). 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer05.jpeg',
+                                  'Certificado De Carga Horaria (horas Reloj Y Académica)',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución). 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer06.jpeg',
+                                  'Nomina De Docentes',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución). 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer07.jpeg',
+                                  'Historial Académico',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución). 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer08.jpeg',
+                                  'Plan De Estudios En Hora Reloj',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución). 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer09.jpeg',
+                                  'Certificado De Promedio',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Indicar a donde o a quien debe ir dirigido dicho certificado (Empresa, Institución). 
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer10.jpeg',
+                                  'Orden De Mérito O Ranking',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer11.jpeg',
+                                  'Certificado De Internado Rotatorio (urbano Y Rural)',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (2 ejemplares) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Una fotocopia de C.I. (Estudiante Nacional), Pasaporte y Visa Estudiantil Vigente (Estudiantes Extranjeros).
+                                     ⨀ Fotocopia del Memorandum o Resolución Administrativa (área urbana, provincia).
+                                     ⨀ Fotocopia del certificado del Diploma de conclusión (área rural, ciudad).
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones.
+                                     ⨀ Presentar los documentos solicitados en ventanilla de trámites. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer11.jpeg',
+                                  'Informe Técnico Del 5.s.s.r.o.',
+                                  '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
+                                     ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
+                                     ⨀ Una fotocopia de C.I. (Estudiante Nacional), Pasaporte y Visa Estudiantil Vigente (Estudiantes Extranjeros).
+                                     ⨀ Fotocopia del Memorandum, área urbana (provincia).
+                                     ⨀ Estado Económico, solicitado en Plataforma de Informaciones. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer11.jpeg',
+                                  'Certificados De Calificaciones Y Programas Analíticos',
+                                  '''La entrega del trámite de Certificados y Programas Analíticos es personal, y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. La entrega de los certificados y programas analíticos es personal o con poder notariado. Duración del trámite: 10 días hábiles a partir del pago.
+                                     ⨀ Presentar una carta dirigida al Ing. MSc. Franklin Nestor Rada, Vicerrector de la Universidad Privada del Valle.
+                                     ⨀ Llenado de una encuesta entregada por trámites de la Universidad Privada del Valle.
+                                     ⨀ Presentar una carta dirigida al Ing. MSc. Franklin Nestor Rada, Vicerrector de la Universidad Privada del Valle.
+                                     ⨀ Recoger un formulario de solvencia interna para su llenado y sellado correspondiente en las diferentes secciones de la universidad.
+                                     ⨀ Presentar en la ventanilla de trámites.
+                                     ⨀ A la entrega de la documentación se adjuntará una comunicación interna mediante la cual se realizará la cancelación correspondiente de los Certificados de Calificaciones en caja.
+                                     ⨀ El costo por.
+                                     ⨀ Adjuntar una fotocopia de la factura. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cer11.jpeg',
+                                  'Certificados De Calificaciones',
+                                  '''La entrega del trámite de Certificados y Programas Analíticos es personal, y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. La entrega de los certificados y programas analíticos es personal o con poder notariado. Duración del trámite: 10 días hábiles a partir del pago.
+                                     ⨀ Presentar una carta dirigida al Ing. MSc. Franklin Nestor Rada, Vicerrector de la Universidad Privada del Valle.
+                                     ⨀ Recoger un formulario de solvencia interna para su llenado y sellado correspondiente en las diferentes secciones de la universidad.
+                                     ⨀ Presentar en la ventanilla de trámites.
+                                     ⨀ A la entrega de la documentación se adjuntará una comunicación interna mediante la cual se realizará la cancelación correspondiente de los Certificados de Calificaciones en caja.
+                                     ⨀ El costo por.
+                                     ⨀ Adjuntar una fotocopia de la factura. '''
                               ),
                             ],
                           ),
@@ -203,165 +318,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
 
                   ),
 
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-
-
-
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'MAESTRIAS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/maestrialpz01.png',
-                                  'Maestria',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-
-
-
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'DIPLOMADOS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz01.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz02.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Informacion. 
-
-⨀ Precio a cancelar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz03.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz04.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Precio a pagar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz05.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz06.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz07.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz08.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz09.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz10.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz11.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-
-
-
-                  ),
+                  
 
 
 
@@ -625,7 +582,6 @@ class _postgradoWidgetState extends State<postgradoWidget> {
           ),
         )
     );
-
 
   }
 }

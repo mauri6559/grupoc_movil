@@ -8,11 +8,13 @@ import 'package:flutter_image/flutter_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class postgradoWidget extends StatefulWidget {
-  const postgradoWidget({super.key});
+
+
+class LegalizacionesWidget extends StatefulWidget {
+  const LegalizacionesWidget({super.key});
 
   @override
-  State<postgradoWidget> createState() => _postgradoWidgetState();
+  State<LegalizacionesWidget> createState() => _LegalizacionesWidgetState();
 }
 
 final emailController = TextEditingController();
@@ -42,9 +44,7 @@ Future sendEmail() async{
   return print(response.statusCode);
 }
 
-class _postgradoWidgetState extends State<postgradoWidget> {
-
-
+class _LegalizacionesWidgetState extends State<LegalizacionesWidget> {
   List pages = [
     Dashboard(),
     qrPage()
@@ -58,9 +58,9 @@ class _postgradoWidgetState extends State<postgradoWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
-
   @override
   Widget build(BuildContext context) {
+
 
 
     return GestureDetector(
@@ -131,7 +131,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/postgrado.jpg',
+                                'assets/imgenesis/legalizaciones.jpeg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -160,7 +160,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'DOCTORADOS',
+                            'LEGALIZACIONES',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -176,22 +176,44 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                               buildServiceCard(
                                   context,
                                   'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
+                                  'Legalización De Diploma De Diplomados',
+                                  '''La entrega de la legalización es "personal" y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. Duración del trámite: 3 días hábiles a partir del pago.
+                                     ⨀ Presentar un CARTAL dirigido al Ing. MSc. Franklin Nestor Hada, Vicerrector de la Universidad Privada del Valle, solicitando legalización de fotocopias.
+                                     ⨀ Recoger un formulario de solvencia interna para su llenado y sellado correspondiente en las diferentes secciones de la universidad:
+                                        a) Plataforma de Informaciones.
+                                        b) Cajas.
+                                     ⨀ Presentar en la ventanilla de trámites:
+                                        a) Carta original y fotocopia.
+                                        b) Formulario de solvencia (llenado y sellado).
+                                        c) Fotocopia del documento(s) a legalizar.
+                                        d) Fotocopia de carnet de identidad (alumnos nacionales).
+                                        e) Fotocopia de pasaporte con visa vigente (alumnos extranjeros).
+                                     ⨀ El costo por:
+                                        a) Legalización es de 50 Bs.- (por cada documento a legalizar)
+                                        b) Hoja de trámite 20 Bs.
+                                        c) Carpeta académica 10 Bs.
+                                     ⨀ Adjuntar una fotocopia de la factura.'''
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  'assets/imgenesis/doctorado01.png',
+                                  'Legalización De Diploma De Diplomados Y Maestrías',
+                                  '''La entrega de la legalización es "personal" y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. Duración del trámite: 3 días hábiles a partir del pago.
+                                     ⨀ Presentar un CARTAL dirigido al Ing. MSc. Franklin Nestor Hada, Vicerrector de la Universidad Privada del Valle, solicitando legalización de fotocopias.
+                                     ⨀ Recoger un formulario de solvencia interna para su llenado y sellado correspondiente en las diferentes secciones de la universidad:
+                                        a) Plataforma de Informaciones.
+                                        b) Cajas.
+                                     ⨀ Presentar en la ventanilla de trámites:
+                                        a) Carta original y fotocopia.
+                                        b) Formulario de solvencia (llenado y sellado).
+                                        c) Fotocopia del documento(s) a legalizar.
+                                        d) Fotocopia de carnet de identidad (alumnos nacionales).
+                                        e) Fotocopia de pasaporte con visa vigente (alumnos extranjeros).
+                                     ⨀ El costo por:
+                                        a) Legalización es de 50 Bs.- (por cada documento a legalizar)
+                                        b) Hoja de trámite 20 Bs.
+                                        c) Carpeta académica 10 Bs.
+                                     ⨀ Adjuntar una fotocopia de la factura.'''
                               ),
                             ],
                           ),
@@ -203,165 +225,9 @@ class _postgradoWidgetState extends State<postgradoWidget> {
 
                   ),
 
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
 
 
 
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'MAESTRIAS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/maestrialpz01.png',
-                                  'Maestria',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-
-
-
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'DIPLOMADOS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz01.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz02.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Informacion. 
-
-⨀ Precio a cancelar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz03.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz04.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Precio a pagar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz05.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz06.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz07.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz08.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz09.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz10.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz11.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-
-
-
-                  ),
 
 
 

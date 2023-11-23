@@ -8,11 +8,13 @@ import 'package:flutter_image/flutter_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class postgradoWidget extends StatefulWidget {
-  const postgradoWidget({super.key});
+
+
+class TituloWidget extends StatefulWidget {
+  const TituloWidget({super.key});
 
   @override
-  State<postgradoWidget> createState() => _postgradoWidgetState();
+  State<TituloWidget> createState() => _TituloWidgetState();
 }
 
 final emailController = TextEditingController();
@@ -42,8 +44,7 @@ Future sendEmail() async{
   return print(response.statusCode);
 }
 
-class _postgradoWidgetState extends State<postgradoWidget> {
-
+class _TituloWidgetState extends State<TituloWidget> {
 
   List pages = [
     Dashboard(),
@@ -57,7 +58,6 @@ class _postgradoWidgetState extends State<postgradoWidget> {
   }
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
-
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +131,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/postgrado.jpg',
+                                'assets/imgenesis/titulo.jpeg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -160,7 +160,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'DOCTORADOS',
+                            'TITULO EN PROVISION NACIONAL',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -203,165 +203,9 @@ class _postgradoWidgetState extends State<postgradoWidget> {
 
                   ),
 
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
 
 
 
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'MAESTRIAS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/maestrialpz01.png',
-                                  'Maestria',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-
-
-
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'DIPLOMADOS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz01.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz02.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Informacion. 
-
-⨀ Precio a cancelar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz03.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz04.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Precio a pagar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz05.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz06.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz07.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz08.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz09.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz10.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz11.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-
-
-
-                  ),
 
 
 
@@ -631,9 +475,10 @@ class _postgradoWidgetState extends State<postgradoWidget> {
 }
 
 
-
 //aca creo todos los cards para poder personalizarlo de manera individual
 Widget buildServiceCard(BuildContext context, String imageUrl, String serviceName, String serviceDetails) {
+
+
   return Align(
     alignment: AlignmentDirectional(0.00, 0.00),
     child: Padding(

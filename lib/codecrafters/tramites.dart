@@ -1,10 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sistema_de_informacion/codecrafters/cambio.dart';
+import 'package:sistema_de_informacion/codecrafters/certificados.dart';
+import 'package:sistema_de_informacion/codecrafters/convalidacion.dart';
+import 'package:sistema_de_informacion/codecrafters/extension.dart';
+import 'package:sistema_de_informacion/codecrafters/legalizaciones.dart';
+import 'package:sistema_de_informacion/codecrafters/titulo.dart';
 import 'package:sistema_de_informacion/src/flutter_flow/flutter_flow_theme.dart';
 import 'package:sistema_de_informacion/dashboard_page.dart';
 import 'package:sistema_de_informacion/qr_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_image/flutter_image.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class tramitesWidget extends StatefulWidget {
   const tramitesWidget({super.key});
@@ -15,596 +23,233 @@ class tramitesWidget extends StatefulWidget {
 
 class _tramitesWidgetState extends State<tramitesWidget> {
 
-  List pages = [
-    Dashboard(),
-    qrPage()
+  var height, width;
+  List imgData = [
+    "assets/imgenesis/traico01.png",
+    "assets/imgenesis/traico02.png",
+    "assets/imgenesis/traico03.png",
+    "assets/imgenesis/traico04.png",
+    "assets/imgenesis/traico05.png",
+    "assets/imgenesis/traico06.png",
   ];
-  int currentIndex = 0;
-  void onTap(int index){
-    setState(() {
-      currentIndex = index;
-    });
-  }
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
+
+  List titles = [
+    "Certificados",
+    "Legalizaciones",
+    "Extensión de documentos de defensa pública",
+    "Título en provisión nacional",
+    "Cambio de Apellido y Nacionalidad",
+    "Convalidación de materias y traspasos",
+  ];
+
+
 
   @override
   Widget build(BuildContext context) {
 
-    return GestureDetector(
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 45, 45, 54),
-            iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
-            automaticallyImplyLeading: true,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              background: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(0),
-                  child: Image.asset(
-                    'assets/imgenesis/banner.png',
-                    fit: BoxFit.cover,
-                  ),
+
+
+    height = MediaQuery.of(context).size.height-60;
+    width = MediaQuery.of(context).size.width;
+    return Scaffold(
+        body: Container(
+          color: Color.fromARGB(255, 122, 0, 49),
+          height: height,
+          width: width,
+          child: Column(
+            children: [
+
+
+
+
+              Container(
+                decoration: BoxDecoration(
+                ),
+                height: height * 0.25,
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top:35,
+                          left: 20,
+                          right: 20
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          /*InkWell(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.sort,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        ),*/
+                          /*Container(
+                          height: 50,
+                          width: 50,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color:Colors.white,
+                            /*image: DecorationImage(
+                              image: AssetImage(
+                                "assets/images/info.png",
+                              )
+                            )*/
+                          ),
+
+                        )*/
+                        ],
+                      ),
+                    ),
+
+
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:50,
+                        left: 30,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Univalle",
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 1
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text(
+                            "Conoce los servicios de univalle",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white54,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 1
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+
+
+                  ],
                 ),
               ),
-            ),
-            toolbarHeight: MediaQuery.sizeOf(context).height * 0.13,
-            elevation: 115,
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            unselectedFontSize: 0,
-            selectedFontSize: 0,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            selectedItemColor: Colors.red,
-            unselectedItemColor: Colors.grey.withOpacity(0.5),
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
-            elevation: 0,
-            items: [
-              BottomNavigationBarItem( icon: Icon(Icons.apps), label: "Home"),
-              BottomNavigationBarItem( icon: Icon(Icons.qr_code), label: "Bar"),
-            ],
-          ),
-          key: scaffoldKey,
-          backgroundColor: Color.fromARGB(255, 161, 0, 71),
-          body: SingleChildScrollView(
-            child: SafeArea(
-              top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 10),
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: Color(0xFFB22A2A),
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/imgenesis/tramites.jpeg',
-                                width: 300,
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+
+
+
+
+
+
+
+
+
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)
+                    )
+                ),
+                height: height * 0.75,
+                width: width,
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.1,
+                    mainAxisSpacing: 25,
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 161, 0, 71),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'SERVICIOS',
-                            style: TextStyle(
-                              color: Colors.white, // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/colegiatura.png',
-                                  'Colegiatura',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
+                  shrinkWrap: true,
+                  itemCount: imgData.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        if (index == 0) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CertificadosWidget()),
+                          );
+                        }else if (index == 1) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LegalizacionesWidget()),
+                          );
+                        }else if (index == 2) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ExtensionWidget()),
+                          );
+                        }else if (index == 3) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TituloWidget()),
+                          );
+                        }else if (index == 4) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CambioWidget()),
+                          );
+                        }else if (index == 5) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ConvalidacionWidget()),
+                          );
+                        }
 
-⨀ Indica la mensualidad o el semestre que desea cancelar.'''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/tramites.jpg',
-                                  'Trámites',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario de solvencia emitido por el área de trámites. 
-
-⨀ Indica la mensualidad o el semestre que desea cancelar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/deudas.jpg',
-                                  'Deudas',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/cheques.jpg',
-                                  'Cheques',
-                                  '''⨀ Carnet de identidad - indispensable. 
-
-⨀ En caso de terceros se requiere una carta autorizada. '''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                      },
                       child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.3,
+                        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.asset(
-                              'assets/images/FONDOG.jpg',
-                            ).image,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black26,
+                                  spreadRadius: 1,
+                                  blurRadius: 6
+                              )
+                            ]
                         ),
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'HORARIOS',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                  ),
-                                ),
-                              ),
+                            Image.asset(
+                              imgData[index],
+                              width: 100,
                             ),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
-                                  child: GridView(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      crossAxisSpacing: 1,
-                                      mainAxisSpacing: 1,
-                                      childAspectRatio: 1,
-                                    ),
-                                    scrollDirection: Axis.vertical,
-                                    children: [
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          'Lunes a viernes',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).titleLarge.override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '8:00 AM  -',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '18:00 PM',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          'Sabado',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).titleLarge.override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '8:00 AM  -',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '12:00 PM',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                            Text(
+                              titles[index],
+                              style: TextStyle(
+                                fontSize: 15,
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.3,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'UBICACION',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image.asset(
-                                'assets/images/maps.png',
-                                width: 342,
-                                height: MediaQuery.sizeOf(context).height *
-                                    0.176,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'PISO NRO 1 y 2  TORRE B',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                    fontSize: 30,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
-            ),
+
+
+
+
+
+            ],
           ),
         )
     );
 
 
+
   }
 }
-
-//aca creo todos los cards para poder personalizarlo de manera individual
-Widget buildServiceCard(BuildContext context, String imageUrl, String serviceName, String serviceDetails) {
-  return Align(
-    alignment: AlignmentDirectional(0.00, 0.00),
-    child: Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-      child: InkWell(
-        splashColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ServiceDetailsScreen(
-                imageUrl: imageUrl,
-                serviceName: serviceName,
-                serviceDetails: serviceDetails,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          width: 183,
-          height: 187,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).rojo2,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                    ),
-                  ],
-                ),
-                child: Image.asset(
-                  imageUrl,
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.157,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: 8),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 8),
-                child: Text(
-                  serviceName,
-                  style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
-                    color: FlutterFlowTheme.of(context).blanco,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-
-//crea una pantalla nueva para mostrar informacion mas a detalle de los cards personalizados
-class ServiceDetailsScreen extends StatelessWidget {
-  final String imageUrl;
-  final String serviceName;
-  final String serviceDetails;
-
-  ServiceDetailsScreen({
-    required this.imageUrl,
-    required this.serviceName,
-    required this.serviceDetails,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 45, 45, 54),
-        iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
-        automaticallyImplyLeading: true,
-        actions: [],
-        flexibleSpace: FlexibleSpaceBar(
-          background: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(0),
-              child: Image.asset(
-                'assets/imgenesis/banner.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height * 0.13,
-        elevation: 115,
-      ),
-      backgroundColor: Color.fromARGB(255, 161, 0, 71),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 161, 0, 71),
-              Color.fromARGB(255, 45, 45, 54),
-            ],
-          ),
-        ),
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                  ),
-                ],
-              ),
-              child: Image.asset(
-                imageUrl,
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.5,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              serviceName,
-              style: TextStyle(
-                fontSize: 24.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              serviceDetails,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
-            ),
-            // Agrega más contenido de detalles si es necesario
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-
-
-
-
-/*
-
-Padding(
-padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
-child: Form(
-child: Column(
-children: [
-Text(
-'Contactanos',
-style: TextStyle(fontSize: 25),
-),
-Padding(padding: const EdgeInsets.only(bottom: 15)),
-TextFormField(
-controller: emailController,
-decoration: const InputDecoration(
-icon: const Icon(Icons.email),
-hintText: 'Email',
-labelText: 'Email',
-),
-),
-SizedBox(
-height: 25,
-),
-TextFormField(
-controller: messageController,
-decoration: const InputDecoration(
-icon: const Icon(Icons.message),
-hintText: 'Message',
-labelText: 'Message',
-),
-),
-SizedBox(
-height: 30,
-),
-ElevatedButton(
-onPressed: () {
-sendEmail();
-},
-child: Text(
-"Enviar",
-style: TextStyle(fontSize: 20),
-),
-)
-],
-),
-),
-)*/

@@ -14,6 +14,8 @@ import 'package:sistema_de_informacion/genesisgroup/psicologia.dart';
 import 'package:sistema_de_informacion/genesisgroup/medico.dart';
 
 class Dashboard extends StatelessWidget {
+
+
   var height, width;
 
   List imgData = [
@@ -59,6 +61,8 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     height = MediaQuery.of(context).size.height-60;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -144,6 +148,10 @@ class Dashboard extends StatelessWidget {
                 ],
               ),
             ),
+
+
+
+
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -266,9 +274,16 @@ class Dashboard extends StatelessWidget {
                 },
               ),
             ),
+
+
+
+
+
           ],
         ),
       )
     );
+
+
   }
 }
