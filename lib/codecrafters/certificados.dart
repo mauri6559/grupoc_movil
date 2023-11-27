@@ -274,7 +274,7 @@ class _CertificadosWidgetState extends State<CertificadosWidget> {
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/cer11.jpeg',
+                                  'assets/imgenesis/cer12.jpeg',
                                   'Informe Técnico Del 5.s.s.r.o.',
                                   '''Todos los trámites son de manera personal. (Duración del trámite 72Hrs.)
                                      ⨀ Solicitar el Formulario de Certificado, otorgado por ventanilla de trámites o presentar una carta (1 ejemplar) de solicitud al VICERRECTOR de la Universidad (M. Sc. Ing. Franklin Nestor Rada).
@@ -284,7 +284,7 @@ class _CertificadosWidgetState extends State<CertificadosWidget> {
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/cer11.jpeg',
+                                  'assets/imgenesis/cer13.jpeg',
                                   'Certificados De Calificaciones Y Programas Analíticos',
                                   '''La entrega del trámite de Certificados y Programas Analíticos es personal, y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. La entrega de los certificados y programas analíticos es personal o con poder notariado. Duración del trámite: 10 días hábiles a partir del pago.
                                      ⨀ Presentar una carta dirigida al Ing. MSc. Franklin Nestor Rada, Vicerrector de la Universidad Privada del Valle.
@@ -298,7 +298,7 @@ class _CertificadosWidgetState extends State<CertificadosWidget> {
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/cer11.jpeg',
+                                  'assets/imgenesis/cer14.jpeg',
                                   'Certificados De Calificaciones',
                                   '''La entrega del trámite de Certificados y Programas Analíticos es personal, y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. La entrega de los certificados y programas analíticos es personal o con poder notariado. Duración del trámite: 10 días hábiles a partir del pago.
                                      ⨀ Presentar una carta dirigida al Ing. MSc. Franklin Nestor Rada, Vicerrector de la Universidad Privada del Valle.

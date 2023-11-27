@@ -130,7 +130,7 @@ class _CambioWidgetState extends State<CambioWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/titulo.jpeg',
+                                'assets/imgenesis/cambio.jpeg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -159,7 +159,7 @@ class _CambioWidgetState extends State<CambioWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'TITULO EN PROVISION NACIONAL',
+                            'CAMBIO',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -174,23 +174,61 @@ class _CambioWidgetState extends State<CambioWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
+                                  'assets/imgenesis/cam01.jpeg',
+                                  'Cambio De Apellido',
+                                  '''DURACIÓN DEL TRÁMITE: 15 DÍAS HÁBILES A PARTIR DEL PAGO.
+                                  ⨀ PRESENTAR UN CARTAL DIRIGIDO AL: ING. MSC. FRANKLIN NESTOR RADA VICERRECTOR DE LA UNIVERSIDAD PRIVADA DEL VALLE.
+                                  ⨀ Requisitos:
+                                    2 Certificados de Nacimiento originales.
+                                    2 fotocopias de Carnet.
+                                    2 Fotocopias de Título de Bachiller Legalizado.
+                                    1 Original o copias legalizadas del Segip.
+                                    1 Original o copias legalizadas de Sereci.'''
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  'assets/imgenesis/cam02.jpeg',
+                                  'Cambio De Apellido Para Estudiantes Extranjeros',
+                                  '''DURACIÓN DEL TRÁMITE: 15 DÍAS HÁBILES A PARTIR DEL PAGO.
+                                  ⨀ PRESENTAR UN CARTAL DIRIGIDO AL: ING. MSC. FRANKLIN NESTOR RADA VICERRECTOR DE LA UNIVERSIDAD PRIVADA DEL VALLE.
+                                  ⨀ Requisitos:
+                                    2 Certificados de Nacimiento originales Apostillados.
+                                    1 Certificado de Calificaciones Apostillado.
+                                    2 fotocopias de Carnet de Extranjería.
+                                    2 Fotocopias de la homologación emitidos por se SEDUCA Legalizados.
+                                    2 Fotocopias de Pasaporte.
+                                    2 Fotocopias de Visa Estudiantil. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cam03.jpeg',
+                                  'Cambio De Nacionalidad',
+                                  '''DURACIÓN DEL TRÁMITE: 15 DÍAS HÁBILES A PARTIR DEL PAGO.
+                                  ⨀ PRESENTAR UN CARTAL DIRIGIDO AL: ING. MSC. FRANKLIN NESTOR RADA VICERRECTOR DE LA UNIVERSIDAD PRIVADA DEL VALLE. 
+                                  ⨀ Requisitos:
+                                    2 Certificados de Nacimiento originales.
+                                    2 fotocopias de Carnet.
+                                    2 Fotocopias de Título de Bachiller Legalizado.
+                                    1 Original o copias legalizadas del Segip.
+                                    1 Original o copias legalizadas de Sereci.
+                                  ⨀ SE REALIZARÁ LA CANCELACIÓN DE LA EXTENSIÓN DE DIPLOMA DE MAESTRÍA EN CAJA.
+                                  ⨀ EL COSTO POR CAMBIO DE NACIONALIDAD ES DE 1.800 Bs. (MIL OCHOCIENTOS 00/100 BOLIVIANOS). '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/cam04.jpeg',
+                                  'Cambio De Nacionalidad Estudiantes Extranjeros',
+                                  '''DURACIÓN DEL TRÁMITE: 15 DÍAS HÁBILES A PARTIR DEL PAGO.
+                                  ⨀ PRESENTAR UN CARTAL DIRIGIDO AL: ING. MSC. FRANKLIN NESTOR RADA VICERRECTOR DE LA UNIVERSIDAD PRIVADA DEL VALLE.
+                                  ⨀ Requisitos:
+                                    2 Certificados de Nacimiento originales Apostillados.
+                                    1 Certificado de Calificaciones Apostillado.
+                                    2 fotocopias de Carnet de Extranjería.
+                                    2 Fotocopias de la homologación emitidos por SESEDUCA Legalizados.
+                                    2 Fotocopias de Pasaporte.
+                                    2 Fotocopias de Visa Estudiantil.
+                                  ⨀ SE REALIZARÁ LA CANCELACIÓN DE LA DIPLOMA DE MAESTRÍA EN CAJA.
+                                  ⨀ EL COSTO POR CAMBIO DE NACIONALIDAD ES DE 1.800 Bs. (MIL OCHOCIENTOS 00/100 BOLIVIANOS) '''
                               ),
                             ],
                           ),

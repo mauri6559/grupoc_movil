@@ -160,7 +160,7 @@ class _TituloWidgetState extends State<TituloWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'TITULO EN PROVISION NACIONAL',
+                            'TITULO',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -175,23 +175,17 @@ class _TituloWidgetState extends State<TituloWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  'assets/imgenesis/tit01.jpeg',
+                                  'Titulo En Provisión Nacional',
+                                  '''DURACIÓN DE TRÁMITE: De 40 días hábiles (seguimiento a través de la página del Ministerio).
+                                     ⨀ Deposito al número de cuenta en el BANCO UNION, N° 10000004669343. El monto a cancelar es de Bs. 1200 (Ministerio de Educación). El depósito debe estar a nombre del estudiante.
+                                     ⨀ 3 fotos 4x4 fondo rojo, traje formal, camisa blanca sin lentes, legible.
+                                     ⨀ 1 sobre blanco pequeño (para las fotos).
+                                     ⨀ Presentar la boleta del depósito original y 2 fotocopias simples.
+                                     ⨀ Una fotocopia de C.I. (Estudiante Nacional).
+                                     ⨀ En caso de PROYECTO DE GRADO, presentar una fotocopia del resumen de las 250 palabras, más la carátula con los siguientes datos: Universidad, carrera, Nombre y Apellidos, título del trabajo, Nombre y Apellidos del Autor, Ciudad, Año de trabajo (carreras semestrales).                   
+                                     ⨀ En caso de las Carreras de MEDICINA Y ODONTOLOGIA, presentar una LEGALIZACIÓN de la Resolución de SEDES.
+                                     ⨀ Toda la documentación debe presentarse en un FOLDER tamaño oficio color crema.'''
                               ),
                             ],
                           ),

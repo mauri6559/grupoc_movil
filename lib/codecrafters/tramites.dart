@@ -25,12 +25,12 @@ class _tramitesWidgetState extends State<tramitesWidget> {
 
   var height, width;
   List imgData = [
+    "assets/imgenesis/traico06.png",
     "assets/imgenesis/traico01.png",
     "assets/imgenesis/traico02.png",
     "assets/imgenesis/traico03.png",
     "assets/imgenesis/traico04.png",
     "assets/imgenesis/traico05.png",
-    "assets/imgenesis/traico06.png",
   ];
 
   List titles = [

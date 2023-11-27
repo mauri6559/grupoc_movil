@@ -131,7 +131,7 @@ class _ConvalidacionWidgetState extends State<ConvalidacionWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/titulo.jpeg',
+                                'assets/imgenesis/convalidacion.jpeg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -160,7 +160,7 @@ class _ConvalidacionWidgetState extends State<ConvalidacionWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'TITULO EN PROVISION NACIONAL',
+                            'CONVALIDACION',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -175,23 +175,33 @@ class _ConvalidacionWidgetState extends State<ConvalidacionWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
+                                  'assets/imgenesis/con01.jpeg',
+                                  'Convalidaciones Materias Y Traspasos',
+                                  '''En el caso de estudantes extranjeros, los certificados de notas y programas analíticos deben estar sellados por el Consulado de Bolivia en el país de origen y sellados en Cancillería en la ciudad de La Paz. DURACIÓN DEL TRÁMITE: 15 días hábiles.
+                                    ⨀ Requisitos:
+                                      a) Memorial (dos ejemplares) de solicitud de convalidación dirigido a la Vicerrectora de la Universidad Privada del Valle (Ing. MSc. Franklin Nestor Rada)
+                                      b) Fotocopia del Carnet de Identidad vigente o Fotocopia de Pasaporte vigente en caso de alumnos extranjeros
+                                      c) Plan de Estudios de la universidad de origen. Los planes de estudio deben contener la relación de todas las materias del primer semestre al último semestre, horas teóricas, horas prácticas y horas totales.
+                                      d) Dos ejemplares de los Certificados de notas originales con sellos y firmas originales
+                                      e) Programas Analíticos de cada materia debidamente firmados y sellados con sellos y firmas originales
+                                      f) Resolución o Decreto Supremo de la Gaceta de la Universidad de origen
+                                      g) Certificados de autenticidad de documentos, elaborados por autoridades de la Universidad de origen
+                                      h) Formulario de trámites que se agregan en Caja (3). '''
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  'assets/imgenesis/con02.jpeg',
+                                  'Convalidaciones Materias Y Traspasos Para Extranjeros',
+                                  '''En el caso de estudantes extranjeros, los certificados de notas y programas analíticos deben estar sellados por el Consulado de Bolivia en el país de origen y sellados en Cancillería en la ciudad de La Paz. DURACIÓN DEL TRÁMITE: 15 días hábiles.
+                                     ⨀ Requisitos:
+                                       a) Memorial (dos ejemplares) de solicitud de convalidación dirigido a la Vicerrectora de la Universidad Privada del Valle (Ing. MSc. Ing. Franklin Nestor Rada).
+                                       b) Pasaporte Vigente (un ejemplar).
+                                       c) Certificado de notas y programas analíticos deben estar Consulados por la Cancillería del país de origen.
+                                       d) Certificado de Homologación (legalizados por la Cancillería en la ciudad de la Paz, dos ejemplares).
+                                       e) Programas Analíticos Legalizados (legalizados por la autoridad Educativa Competente de país de origen, el Ministerio de Relaciones Exteriores del país de origen, Apostillados, un ejemplar).
+                                       f) Plan de Estudios con la Carga Horaria (un ejemplar).
+                                       g) Certificado de autenticidad (la Universidad debe proceder con la verificación).
+                                     DURACIÓN DEL TRÁMITE: 15 días hábiles. '''
                               ),
                             ],
                           ),

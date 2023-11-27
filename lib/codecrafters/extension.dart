@@ -173,23 +173,62 @@ class _ExtensionWidgetState extends State<ExtensionWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
+                                  'assets/imgenesis/ext01.jpeg',
+                                  'Extensión De Documentos De Defensa Pública',
+                                  '''La entrega de la extensión de documentos de defensa pública es "personal" y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. Duración del trámite: 40 días hábiles después de la emisión del diploma académico.
+                                  ⨀ Presentar un CARTAL dirigido al Ing. MSC. Franklin Nestor Rada, Vicerrector de la Universidad Privada del Valle, solicitando extensión de documentos de defensa pública.                            
+                                  ⨀ Recoger un formulario de solvencia interna para su llenado y sellado correspondiente en las diferentes secciones de la universidad:
+                                      a) Dirección de Carrera
+                                      b) Biblioteca
+                                      c) Cajas
+                                      d) Plataforma de Informaciones
+                                  ⨀ Presentar en la ventanilla de trámites:
+                                      a) Carta original y fotocopia.
+                                      b) Formulario de solvencia (llenado y sellado)
+                                      c) Fotocopia del documento(s) a legalizar
+                                      d) Fotocopia de carnet de identidad (alumnos nacionales)
+                                      e) Fotocopia de pasaporte con visa vigente (alumnos extranjeros) 
+                                  
+                                  ⨀ A la entrega de la documentación se adjuntará una comunicación interna mediante la cual se realizará la cancelación de la extensión de documentos de defensa pública en caja. El costo por:
+                                      a) Extensión de documentos de defensa pública es de 1.800 Bs.- (un mil ochocientos 00/100 bolivianos)
+                                      b) Programas analíticos de toda la carrera (50 Bs. cada uno) (solo Medicina) estudiantes de
+                                      c) Cancelar tres legalizaciones en la suma de 150 Bs.-(50 Bs cada una)
+                                      d) Hoja de trámites 20 Bs.
+                                      e) Carpeta académica 10 Bs.
+                                  ⨀ Adjuntar una fotocopia de la factura.'''
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
+                                  'assets/imgenesis/ext02.jpeg',
+                                  'Solicitar Extensión Del Supletorio De Diploma Académico',
+                                  '''DURACIÓN DE TRÁMITE: 40 DÍAS HÁBILES A PARTIR DEL PAGO. LA ENTREGA DEL TRÁMITE DEL SUPLETORIO ES "PERSONAL", Y CON UNA COPIA DE LA CARTA Y LA FACTURA ORIGINAL, SEGÚN SU NÚMERO DE TRÁMITE RESPECTIVO. LA ENTREGA DE LOS CERTIFICADOS ES "PERSONAL O CON PODER NOTARIADO.
+                                  ⨀ 3 publicaciones originales consecutivas en diario de circulación nacional indicando: motivo (extravío, robo), N de diploma académico y el grado con el que concluyó sus estudios superiores (Lic., Ing....) 
+                                  ⨀ Copia legalizada de la denuncia presentada en la Fuerza Especial de Lucha Contra el Crimen.
+                                  ⨀ En caso de haber extraviado en el exterior, presentar denuncia en INTERPOL y acompañar la copia legalizada de la denuncia.
+                                  ⨀ Memorial dirigido al Lic. MSC. Enrique Villanueva Gutiérrez, Vicerrector de la universidad, SOLICITANDO EXTENSIÓN DEL SUPLETORIO DEL DIPLOMA, indicando los motivos y señalando la documentación que se entregará.
+                                  ⨀ En caso de ser un tercer interesado, debe presentar testimonio de poder actual en el que se le otorgan las facultades necesarias para el trámite.
+                                  ⨀ Costo Bs.-1980. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/ext03.jpeg',
+                                  'Extensión De Diploma De Maestría',
+                                  '''La entrega del trámite de la extensión de maestría es "personal" y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. DURACIÓN DEL TRÁMITE: 40 DÍAS HÁBILES A PARTIR DEL PAGO. PRESENTAR UN CARTAL DIRIGIDO AL: ING. MSC. FRANKLIN NESTOR RADA VICERRECTOR DE LA UNIVERSIDAD PRIVADA DEL VALLE SOLICITANDO EXTENSIÓN DE DIPLOMA DE MAESTRÍA. La entrega del trámite de la extensión de maestría es "personal" y con una copia de la carta y la factura original, según su número de trámite respectivo.
+                                  ⨀ RECOJO DE FORMULARIO DE SOLVENCIA INTERNA PARA SU LLENADO Y SELLADO CORRESPONDIENTE EN LAS DIFERENTES SECCIONES DE LA UNIVERSIDAD:
+                                     a. DIRECCIÓN DE POSTGRADO
+                                     b. BIBLIOTECA
+                                  ⨀ PRESENTAR EN LA VENTANILLA DE TRÁMITES:
+                                     a. CARTA ORIGINAL Y FOTOCOPIA.
+                                     b. FORMULARIO DE SOLVENCIA (LLENADO Y SELLADO)
+                                     c. FOTOCOPIA CARNET DE IDENTIDAD (ALUMNOS NACIONALES)
+                                     d. FOTOCOPIA PASAPORTE CON VISA VIGENTE (ALUMNOS EXTRANJEROS)
 
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  ⨀ A LA ENTREGA DE LA DOCUMENTACIÓN SE ADJUNTARÁ UNA COMUNICACIÓN INTERNA MEDIANTE LA CUAL SE REALIZARÁ LA CANCELACIÓN DE LA EXTENSIÓN DE DIPLOMA DE MAESTRÍA EN CAJA. EL COSTO POR: 
+                                     a. EXTENSIÓN DE DIPLOMA DE MAESTRÍA ES DE 4.000 Bs. (CUATRO MIL SEISCIENTOS 00/100 BOLIVIANOS) 
+                                     b. CANCELAR TRES LEGALIZACIONES EN LA SUMA DE 150 Bs. (50 Bs. CADA UNA)
+                                     c. HOJA DE TRÁMITES 20 Bs.
+                                     d. CARPETA ACADÉMICA 10 Bs.
+                                     Adjuntar una fotocopia de la factura'''
                               ),
                             ],
                           ),

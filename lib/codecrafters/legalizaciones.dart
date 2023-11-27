@@ -175,7 +175,7 @@ class _LegalizacionesWidgetState extends State<LegalizacionesWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
+                                  'assets/imgenesis/leg01.jpeg',
                                   'Legalización De Diploma De Diplomados',
                                   '''La entrega de la legalización es "personal" y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. Duración del trámite: 3 días hábiles a partir del pago.
                                      ⨀ Presentar un CARTAL dirigido al Ing. MSc. Franklin Nestor Hada, Vicerrector de la Universidad Privada del Valle, solicitando legalización de fotocopias.
@@ -196,7 +196,7 @@ class _LegalizacionesWidgetState extends State<LegalizacionesWidget> {
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
+                                  'assets/imgenesis/leg02.jpeg',
                                   'Legalización De Diploma De Diplomados Y Maestrías',
                                   '''La entrega de la legalización es "personal" y se debe adjuntar una copia de la carta y la factura original, según su número de trámite respectivo. Duración del trámite: 3 días hábiles a partir del pago.
                                      ⨀ Presentar un CARTAL dirigido al Ing. MSc. Franklin Nestor Hada, Vicerrector de la Universidad Privada del Valle, solicitando legalización de fotocopias.
