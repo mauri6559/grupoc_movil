@@ -68,6 +68,7 @@ dependencies:
   carousel_slider: ^4.2.1
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.1.0
+  dots_indicator: ^2.0.0
 
 
 
@@ -75,7 +76,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_image: ^4.0.0
-
+  youtube_player_flutter: ^8.1.2
   flutter_lints: ^2.0.0
 
 
@@ -85,3 +86,4 @@ flutter:
     - assets/images/
     - assets/imgenesis/
     - assets/MauImagenes/
+    - assets/imamarvel/

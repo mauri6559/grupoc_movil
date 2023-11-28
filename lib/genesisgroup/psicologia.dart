@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:sistema_de_informacion/src/flutter_flow/flutter_flow_theme.dart';
 import 'package:sistema_de_informacion/dashboard_page.dart';
 import 'package:sistema_de_informacion/qr_page.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -13,15 +17,29 @@ class psicoloWidget extends StatefulWidget {
   State<psicoloWidget> createState() => _psicoloWidgetState();
 }
 
+//todo es para la parte de correo
 final emailController = TextEditingController();
 final messageController = TextEditingController();
+
+bool esCorreoValido(String correo) {
+  final regExp = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+  return regExp.hasMatch(correo);
+}
 
 Future sendEmail() async{
   final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
   const serviceId = "service_cebjusa";
   const templateId = "template_o2kvhsd";
   const userId = "DkM-oXCqIYVAkEg3E";
-  const to_email = "mauriciogarciam9@gmail.com";
+  const to_email = "soriamarvel8@gmail.com";
+
+  // Validar dirección de correo electrónico
+  if (!esCorreoValido(emailController.text)) {
+    // Manejar el caso de un correo electrónico no válido según tus necesidades
+    print('Correo electrónico no válido');
+    return;
+  }
+
   final response = await http.post(url,
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
@@ -37,8 +55,15 @@ Future sendEmail() async{
         }
       })
   );
+  // Verifica que el correo se haya enviado correctamente
+  if (response.statusCode == 200) {
+    // Borra los campos después de enviar el correo
+    emailController.clear();
+    messageController.clear();
+  }
   return print(response.statusCode);
 }
+//todo es para la parte de correo
 
 class _psicoloWidgetState extends State<psicoloWidget> {
   List pages = [
@@ -56,6 +81,13 @@ class _psicoloWidgetState extends State<psicoloWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    // Bloquea la rotación horizontal del video
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]);
+
     return GestureDetector(
         child: Scaffold(
           appBar: AppBar(
@@ -69,7 +101,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(0),
                   child: Image.asset(
-                    'assets/imgenesis/banner.png',
+                    'assets/imamarvel/banner.png',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -103,6 +135,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  //banner
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -119,7 +152,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.asset(
-                                'assets/imgenesis/psciofotor.jpg',
+                                'assets/imamarvel/psciofotor.jpg',
                                 width: 300,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -130,6 +163,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                       ),
                     ],
                   ),
+                  //servicios
                   Container(
                     width: double.infinity,
                     height: MediaQuery.sizeOf(context).height * 0.3,
@@ -144,7 +178,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                           child: Text(
                             'SERVICIOS',
                             style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
+                              color: Colors.black, // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
                               fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
                             ),
@@ -156,22 +190,63 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/psiasesoest.jpg',
-                                  'Estudiantes',
-                                  '''⨀ Asesoramiento Estudiantil (Uso de Credencial-Estudiantes)'''
+                                context,
+                                'assets/imamarvel/psiasesor.jpg',
+                                'Asesoramiento',
+                                '\n● Sesiones de apoyo emocional.'
+                                    '\n\n● Evaluación de necesidades específicas de cada estudiante.'
+                                    '\n\n● Diseño de estrategias personalizadas de intervención.',
                               ),
                               buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/psiasesperson.jpg',
-                                  'Personal',
-                                  '''⨀ Asesoramiento al Personal de la Institución (Uso de credencial-Personal) '''
+                                context,
+                                'assets/imamarvel/psiintervencion.jpg',
+                                'Intervención Grupal',
+                                '\n● Talleres de estrategias de aprendizaje.'
+                                    '\n\n● Talleres de autorregulación emocional.'
+                                    '\n\n● Talleres de resolución de conflictos.'
+                                    '\n\n● Sesiones de trabajo en grupo para fomentar la comunicación y el apoyo entre estudiantes.',
                               ),
                               buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/psibienestar.jpg',
-                                  'Bienestar Mental',
-                                  '''⨀ Programas de Bienestar Mental (Eventos, Actividades - Estudiantes). '''
+                                context,
+                                'assets/imamarvel/psievaluacion.jpg',
+                                'Evaluaciones',
+                                '\n● Pruebas estandarizadas para evaluar habilidades cognitivas.'
+                                    '\n\n● Evaluación de habilidades socioemocionales.'
+                                    '\n\n● Identificación de posibles dificultades de aprendizaje.',
+                              ),
+                              buildServiceCard(
+                                context,
+                                'assets/imamarvel/psivocacional.jpg',
+                                'Orientacion Vocacional',
+                                '\n● Entrevistas individuales para explorar intereses y aptitudes.'
+                                    '\n\n● Pruebas de orientación vocacional.'
+                                    '\n\n● Asesoramiento sobre opciones educativas y profesionales.',
+                              ),
+                              buildServiceCard(
+                                context,
+                                'assets/imamarvel/psitalleres.jpg',
+                                'Talleres',
+                                '\t\t● APRENDIZAJE'
+                                    '\n⨀ Desarrollo de habilidades de estudio.'
+                                    '\n\n⨀ Estrategias para mejorar la concentración. '
+                                    '\n\n⨀ Métodos efectivos de toma de apuntes.'
+                                    '\n\n\t\t● DESARROLLO PERSONAL '
+                                    '\n⨀ Sesiones sobre autoconocimiento y autoestima.'
+                                    '\n\n⨀ Desarrollo de habilidades sociales.'
+                                    '\n\n⨀ Gestión del tiempo y establecimiento de metas.',
+                              ),
+                              buildServiceCard(
+                                context,
+                                'assets/imamarvel/psievaluaciones.jpg',
+                                'Evaluacion Psicologica',
+                                '\t\t● POSTULANTES A INTERCAMBIO'
+                                    '\n⨀ Evaluación de adaptabilidad y habilidades sociales.'
+                                    '\n\n⨀ Identificación de posibles desafíos emocionales durante el intercambio.'
+                                    '\n\n⨀ Asesoramiento para una transición exitosa.'
+                                    '\n\n\t\t● POSTULANTES A INTERNADO ROTATORIO '
+                                    '\n⨀ Evaluación de habilidades de trabajo en equipo.'
+                                    '\n\n⨀ Identificación de factores de estrés relacionados con el internado.'
+                                    '\n\n⨀ Apoyo emocional durante la transición al entorno clínico.',
                               ),
                             ],
                           ),
@@ -179,11 +254,12 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                       ],
                     ),
                   ),
+                  //horarios
                   Align(
                     alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                      EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
                       child: Container(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.3,
@@ -206,9 +282,9 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10, 10, 10, 0),
                                 child: Text(
-                                  'HORARIOS',
+                                  'HORARIOS DE ATENCION',
                                   style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
+                                      .headlineMedium
                                       .override(
                                     fontFamily: 'Outfit',
                                     color: FlutterFlowTheme.of(context)
@@ -272,6 +348,45 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                           ),
                                         ),
                                       ),
+                                      Align(
+                                        alignment: AlignmentDirectional(0.00, 0.00),
+                                        child: Text(
+                                          'Sabado',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context).titleLarge.override(
+                                            fontFamily: 'Outfit',
+                                            color: FlutterFlowTheme.of(context).blanco,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: AlignmentDirectional(0.00, 0.00),
+                                        child: Text(
+                                          '8:00 AM  -',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context).blanco,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: AlignmentDirectional(0.00, 0.00),
+                                        child: Text(
+                                          '12:00 PM',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context).blanco,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -282,14 +397,15 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                       ),
                     ),
                   ),
+                  //VIDEO reproductor ubicacion
                   Align(
                     alignment: AlignmentDirectional(0.00, 0.00),
                     child: Padding(
                       padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                      EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
                       child: Container(
                         width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.3,
+                        height: MediaQuery.sizeOf(context).height * 0.35,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).rojo2,
                           borderRadius: BorderRadius.circular(20),
@@ -303,7 +419,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10, 10, 10, 0),
                                 child: Text(
-                                  'UBICACION',
+                                  'UBICANOS',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(
@@ -314,30 +430,35 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                 ),
                               ),
                             ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image.asset(
-                                'assets/images/maps.png',
-                                width: 342,
-                                height: MediaQuery.sizeOf(context).height *
-                                    0.176,
-                                fit: BoxFit.cover,
+                            YoutubePlayer(
+                              controller: YoutubePlayerController(
+                                initialVideoId: 'LDZEMoRMlKc', // Solo el ID del video
+                                flags: YoutubePlayerFlags(
+                                  autoPlay: false,
+                                  mute: false,
+                                ),
+                              ),
+                              showVideoProgressIndicator: true,
+                              progressColors: ProgressBarColors(
+                                playedColor: Colors.amber, // Color de la barra de progreso reproducido
+                                handleColor: Colors.amberAccent, // Color del manipulador de progreso
                               ),
                             ),
                             Align(
                               alignment: AlignmentDirectional(0.00, 0.00),
                               child: Padding(
+
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10, 10, 10, 0),
                                 child: Text(
-                                  'PISO NRO 1 y 2  TORRE B',
+
+                                  'Sub Suelo 1 - Torre Innovacion',
                                   style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
+                                      .headlineMedium
                                       .override(
                                     fontFamily: 'Outfit',
                                     color: FlutterFlowTheme.of(context)
                                         .blanco,
-                                    fontSize: 30,
                                   ),
                                 ),
                               ),
@@ -347,48 +468,143 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
-                    child: Form(
-                      child: Column(
-                        children: [
-                          Text(
-                            'Contactanos',
-                            style: TextStyle(fontSize: 25),
-                          ),
-                          Padding(padding: const EdgeInsets.only(bottom: 15)),
-                          TextFormField(
-                            controller: emailController,
-                            decoration: const InputDecoration(
-                              icon: const Icon(Icons.email),
-                              hintText: 'Email',
-                              labelText: 'Email',
+                  //contactanos
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding:
+                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
+                      child: Container(
+                        width: double.infinity,
+                        height: MediaQuery.sizeOf(context).height * 0.4,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).rojo2,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            //TODO contactanos parte
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
+                              child: Form(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'CONTACTANOS',
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Padding(padding: const EdgeInsets.only(bottom: 15)),
+                                    TextFormField(
+                                      controller: emailController,
+                                      decoration: InputDecoration(
+                                        icon: const Icon(Icons.email, color: Colors.white), // Color del icono
+                                        hintText: 'Email',
+                                        labelText: 'Email',
+                                        labelStyle: TextStyle(color: Colors.white),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
+                                        ),
+                                      ),
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    TextFormField(
+                                      controller: messageController,
+                                      decoration: InputDecoration(
+                                        icon: const Icon(Icons.message, color: Colors.white), // Color del icono
+                                        hintText: 'Message',
+                                        labelText: 'Message',
+                                        labelStyle: TextStyle(color: Colors.white),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
+                                        ),
+                                      ),
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        sendEmail();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.amber, // Color del fondo del botón
+                                      ),
+                                      child: Text(
+                                        "Enviar",
+                                        style: TextStyle(fontSize: 20, color: Colors.white),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextFormField(
-                            controller: messageController,
-                            decoration: const InputDecoration(
-                              icon: const Icon(Icons.message),
-                              hintText: 'Message',
-                              labelText: 'Message',
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  //APARTADO DE DIFUSION
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding:
+                      EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
+                      child: Container(
+                        width: double.infinity,
+                        height: MediaQuery.sizeOf(context).height * 0.25,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).rojo2,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 10, 10, 0),
+                                child: Text(
+                                  'ENCUENTRANOS \n\t\t\t\t\ttambien en:',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .blanco,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              sendEmail();
-                            },
-                            child: Text(
-                              "Enviar",
-                              style: TextStyle(fontSize: 20),
+                            //TODO area de links a otras platafomas
+                            SizedBox(height: 10.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                _buildLink('assets/imamarvel/logoradio.png', 'https://zeno.fm/radio/univalle-online-radio-hldi/'),
+                                _buildLink('assets/imamarvel/logotv.png', 'https://univalletelevision.com/'),
+                                _buildLink('assets/imamarvel/logoyoutube.png', 'https://www.youtube.com/@univallelapaz'),
+                                // Agrega más enlaces según sea necesario
+                              ],
                             ),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -398,6 +614,35 @@ class _psicoloWidgetState extends State<psicoloWidget> {
           ),
         )
     );
+  }
+  Widget _buildLink(String imagePath, String url) {
+    return GestureDetector(
+      onTap: () => _launchURL(url),
+      child: Column(
+        children: [
+          Container(
+            width: 100.0, // Ajusta el ancho del icono según sea necesario
+            height: 100.0, // Ajusta la altura del icono según sea necesario
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white, // Cambia al color que deseas
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  // Función para abrir la URL
+  _launchURL(String url) {
+    launch(url).then((_) {
+      print("La URL se abrió correctamente");
+    }).catchError((error) {
+      print("Error al abrir la URL: $error");
+    });
   }
 }
 //aca creo todos los cards para poder personalizarlo de manera individual
@@ -453,11 +698,14 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
               SizedBox(height: 8),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 8),
-                child: Text(
-                  serviceName,
-                  style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
-                    color: FlutterFlowTheme.of(context).blanco,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    serviceName,
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                      fontFamily: 'Outfit',
+                      color: FlutterFlowTheme.of(context).blanco,
+                    ),
                   ),
                 ),
               ),
@@ -468,6 +716,7 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
     ),
   );
 }
+
 //crea una pantalla nueva para mostrar informacion mas a detalle de los cards personalizados
 class ServiceDetailsScreen extends StatelessWidget {
   final String imageUrl;
@@ -483,84 +732,73 @@ class ServiceDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 45, 45, 54),
-        iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
-        automaticallyImplyLeading: true,
-        actions: [],
-        flexibleSpace: FlexibleSpaceBar(
-          background: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(0),
-              child: Image.asset(
-                'assets/imgenesis/banner.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height * 0.13,
-        elevation: 115,
-      ),
-      backgroundColor: Color.fromARGB(255, 161, 0, 71),
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height, // Ajusta la altura para que ocupe toda la pantalla
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 161, 0, 71),
-                Color.fromARGB(255, 45, 45, 54),
-              ],
-            ),
-          ),
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                    ),
-                  ],
-                ),
-                child: Image.asset(
-                  imageUrl,
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Color.fromARGB(255, 45, 45, 54),
+            expandedHeight: MediaQuery.of(context).size.height * 0.4,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
                 serviceName,
                 style: TextStyle(
-                  fontSize: 24.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
-              Text(
-                serviceDetails,
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
+              background: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
+                ),
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
                 ),
               ),
-              // Agrega más contenido de detalles si es necesario
-            ],
+            ),
           ),
-        ),
+          SliverToBoxAdapter(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromARGB(255, 161, 0, 71),
+                    Color.fromARGB(255, 45, 45, 54),
+                  ],
+                ),
+              ),
+              height: MediaQuery.of(context).size.height, // Ajusta la altura para que ocupe toda la pantalla
+              padding: EdgeInsets.all(16.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 7.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 8),
+                      Text(
+                        serviceDetails,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      // Puedes agregar más contenido si es necesario
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
