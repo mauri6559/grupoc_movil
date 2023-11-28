@@ -10,6 +10,8 @@ import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 
 class FotoWidget extends StatefulWidget {
 
@@ -474,7 +476,7 @@ Productos:
                           child: Container(
 
                             width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.30,
+                            height: MediaQuery.sizeOf(context).height * 0.38,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).rojo2,
                               borderRadius: BorderRadius.circular(20),
@@ -502,12 +504,18 @@ Productos:
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(18),
-                                  child: Image.asset(
-                                    'assets/images/maps.png',
-                                    width: 342,
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.176,
-                                    fit: BoxFit.cover,
+                                  child: YoutubePlayer(
+                                    controller: YoutubePlayerController(
+                                      initialVideoId: 'Io2XYItWIYw',
+                                      flags: YoutubePlayerFlags(
+                                        autoPlay: false,
+                                        mute: false,
+
+                                      ),
+
+                                    ),
+
+                                    showVideoProgressIndicator: true,
                                   ),
                                 ),
                                 Align(

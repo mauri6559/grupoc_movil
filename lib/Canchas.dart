@@ -10,6 +10,8 @@ import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 
 class CanchasWidget extends StatefulWidget {
 
@@ -735,7 +737,7 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                           EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.35,
+                            height: MediaQuery.sizeOf(context).height * 0.40,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).rojo2,
                               borderRadius: BorderRadius.circular(20),
@@ -762,12 +764,18 @@ class _CanchasWidgetState extends State<CanchasWidget> {
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(18),
-                                  child: Image.asset(
-                                    'assets/images/maps.png',
-                                    width: 342,
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.176,
-                                    fit: BoxFit.cover,
+                                  child: YoutubePlayer(
+                                    controller: YoutubePlayerController(
+                                      initialVideoId: 'A0kbBB7doaI',
+                                      flags: YoutubePlayerFlags(
+                                        autoPlay: false,
+                                        mute: false,
+
+                                      ),
+
+                                    ),
+
+                                    showVideoProgressIndicator: true,
                                   ),
                                 ),
                                 Align(

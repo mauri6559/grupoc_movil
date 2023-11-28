@@ -607,7 +607,7 @@ Mantente al tanto de las facilidades de pago que existen
                                   borderRadius: BorderRadius.circular(18),
                                   child: YoutubePlayer(
                                     controller: YoutubePlayerController(
-                                      initialVideoId: 'sk_T8BYNEI4',
+                                      initialVideoId: 'l6P2Tv2rZ7k',
                                       flags: YoutubePlayerFlags(
                                         autoPlay: false,
                                         mute: false,
