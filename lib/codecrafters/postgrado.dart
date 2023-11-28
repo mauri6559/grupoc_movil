@@ -160,7 +160,7 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'DOCTORADOS',
+                            'POSTGRADOS',
                             style: TextStyle(
                               color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
                               fontSize: 24, // Tamaño de la fuente
@@ -175,23 +175,49 @@ class _postgradoWidgetState extends State<postgradoWidget> {
                             children: [
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado01.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Estudiante Nuevo (Llevar el formulario de inscripción).
-
-⨀ Precios a canselar.'''
+                                  'assets/imgenesis/post01.jpeg',
+                                  'Postgrado Doctorado',
+                                  '''El grado de Doctor (Ph.D) se confiere al doctorando que ha obtenido un grado de Magister en la respectiva disciplina y que ha aprobado un programa de correspondiente, acreditando que quien lo posee, tiene competencias necesarias para efectuar investigaciones originales. El Programa de Doctorado contempla necesariamente la elaboración presentación sustentación, defensa y aprobación de una tesis doctoral, consistente en una investigación original desarrollada en forma autónoma y que signifique una contribución a la disciplina de que se trate.
+                                     ⨀ Requisitos:
+                                       a) Solicitud de admisión al programa.
+                                       b) 2 copias legalizadas de Diploma Académico de Maestría.
+                                       c) 2 copias legalizadas del Título en Provisión Nacional de Licenciatura.
+                                       d) Contrato de estudios.
+                                       e) 2 Cartas de recomendación.
+                                       f) Currículo vitae.
+                                       g) 2 fotocopias del carnet de identidad.
+                                       h) 2 Cartas de recomendación.
+                                       i) 1 Certificado de nacimiento original.
+                                       j) 4 Fotografías 4x4 fondo plomo..'''
                               ),
                               buildServiceCard(
                                   context,
-                                  'assets/imgenesis/doctorado02.png',
-                                  'Doctorado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Formulario. 
-
-⨀ Precios a cancelar. '''
+                                  'assets/imgenesis/post02.jpeg',
+                                  'Postgrado Maestría',
+                                  '''Los Programas de Maestría brindan conocimientos, destrezas y habilidades en diferentes campos y disciplinas científicos. Tiene como sustento el entrenamiento sistemático y riguroso en métodos, técnicas y procedimientos de investigación, los mismos que permiten al maestrante organizar el proceso de construcción de conocimientos en diferentes áreas y disciplinas de la ciencia y la tecnología.
+                                     ⨀ Requisitos:
+                                       a) Currículum Vitae no documentado.
+                                       b) Solicitud de admisión al programa.
+                                       c) 2 copias legalizadas de Titulo en Provisión Nacional.
+                                       d) 2 copias legalizadas de diploma académico.
+                                       e) 2 copias de Cédula de identidad
+                                       f) 2 certificados de nacimiento original.
+                                       g) 4 fotos 4x4 fondo plomo.
+                                       h) Contrato de estudio y Formulario de Inscripción.
+                                       i) Carta de aceptación al programa. '''
+                              ),
+                              buildServiceCard(
+                                  context,
+                                  'assets/imgenesis/post03.jpeg',
+                                  'Postgrado Diplomado',
+                                  '''El Diplomado es un programa de postgrado de carácter sistemático que tiene como propósito profundizar y actualizar conocimientos, habilidades y destrezas que requiere el ejercicio profesional en un área o en una disciplina específica.
+                                     ⨀ Requisitos:
+                                       a) Título en Provisión Nacional.
+                                       b) Fotocopia Diploma Académico.
+                                       c) Carnet de Identidad.
+                                       d) Certificado de Nacimiento actualizado.
+                                       e) Currículum Vitae sin documentar.
+                                       f) 4 fotos 4x4 fondo plomo (físico). '''
                               ),
                             ],
                           ),
@@ -203,165 +229,10 @@ class _postgradoWidgetState extends State<postgradoWidget> {
 
                   ),
 
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
 
 
 
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'MAESTRIAS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/maestrialpz01.png',
-                                  'Maestria',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
 
-⨀ Precio a cancelar.'''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-
-
-
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'DIPLOMADOS',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 161, 0, 71), // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz01.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante.
-                                
-⨀ Informacion.
-
-⨀ Precio a cancelar.'''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz02.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Informacion. 
-
-⨀ Precio a cancelar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz03.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz04.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. 
-
-⨀ Precio a pagar. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz05.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz06.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz07.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz08.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz09.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz10.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imgenesis/diplomadolpz11.png',
-                                  'Diplomado',
-                                  '''⨀ Datos del estudiante. '''
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-
-
-
-                  ),
 
 
 
