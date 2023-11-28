@@ -217,14 +217,13 @@ class _PlataformaWidgetState extends State<PlataformaWidget> {
                                     buildServiceCard(
                                         context,
                                         'assets/images/pagoplan.jpg',
-                                        'Plan de pago',
+                                        'Metodos de pago',
                                         '''
-Descubre nuestro flexible plan de pagos universitarios. ¡Educa sin preocupaciones!
+Descubre los diferentes metodos de pago que ofrece la universidad
 
-Servicios:
-⨀ Flexibilidad en plazos y montos
-⨀ Exención de intereses o tasas bajas
-⨀ Transparencia y accesibilidad
+Métodos:
+⨀ Pago personal en cajas
+⨀ Pago mediante deposito bancario (Pedir el numero de cuenta en cajas)
 '''
                                     ),
                                     buildServiceCard(
@@ -232,12 +231,18 @@ Servicios:
                                         'assets/images/inscripcio.jpg',
                                         'Inscripciones',
                                         '''
-Inscripciones abiertas: ¡Prepárate para tu futuro académico en Univalle
-
-Servicios:
-⨀ Documentación académica
-⨀ Solicitud de admisión
-⨀ Documentos de identidad
+Inscripciones abiertas: ¡Prepárate para tu futuro académico en Univalle. Conoce los requisitos para inscribirte
+Etapa 1: 
+⨀ Reserva: Se necesita la fotocopia de carnet del estudiante
+  En caso de que el estudiante sea menor de edad que necesita una fotocopia de carnet del padre, madre o apoderado
+  Pagar el monto minimo para la reserva (Varia dependiendo de cada carrera)
+  
+Etapa 2: 
+⨀ Inscripcion
+  Requisitos:
+  - 2 Certificados de nacimiento originales computarizados (No mas antiguos a 3 años)
+  - Fotocopia de carnet de identidad del estudiante
+  - 2 Fotocopias legalizadas del titulo de bachiller
 '''
                                     ),
                                     buildServiceCard(
@@ -260,10 +265,10 @@ Servicios:
                                         '''
 Consigue tus credenciales de entrada a Univalle hoy mismo.
 
-Servicios:
-⨀ Acceso a servicios y recursos
-⨀ Descuentos y privilegios
-⨀ Identificación y seguridad
+Requisitos:
+⨀ Pago de 70 Bs en caja
+⨀ Entregar la factura en plataforma de atencion
+⨀ Entrega en 2 dias habiles
 '''
                                     ),buildServiceCard(
                                         context,
@@ -553,7 +558,7 @@ Servicios
                                 controller: messageController,
                                 decoration: const InputDecoration(
                                   icon: const Icon(Icons.message),
-                                  hintText: 'Message',
+                                  hintText: '.',
                                   labelText: 'Message',
                                 ),
                               ),
