@@ -9,6 +9,7 @@ import 'package:sistema_de_informacion/src/flutter_flow/flutter_flow_widgets.dar
 import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class NafWidget extends StatefulWidget {
 
@@ -43,6 +44,14 @@ Future sendEmail() async{
   );
   return print(response.statusCode);
 }
+
+YoutubePlayerController _controller = YoutubePlayerController(
+  initialVideoId: 'sk_T8BYNEI4',
+  flags: YoutubePlayerFlags(
+    autoPlay: true,
+    mute: true,
+  ),
+);
 
 class _NafWidgetState extends State<NafWidget> {
   List pages = [
@@ -295,7 +304,7 @@ Requisitos:
                                         'assets/images/reiva.jpg',
                                         'RE-IVA',
                                         '''
-Recibe ayuda con tus impuestos o devolucion del mismo
+Recibe ayuda con tus impuestos y la devolucion del mismo
 
 Requisitos:
 ⨀ CI
@@ -565,7 +574,7 @@ Mantente al tanto de las facilidades de pago que existen
                             width: double.infinity,
                             height: MediaQuery
                                 .sizeOf(context)
-                                .height * 0.3,
+                                .height * 0.38,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme
                                   .of(context)
@@ -596,14 +605,18 @@ Mantente al tanto de las facilidades de pago que existen
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(18),
-                                  child: Image.asset(
-                                    'assets/images/maps.png',
-                                    width: 342,
-                                    height: MediaQuery
-                                        .sizeOf(context)
-                                        .height *
-                                        0.176,
-                                    fit: BoxFit.cover,
+                                  child: YoutubePlayer(
+                                    controller: YoutubePlayerController(
+                                      initialVideoId: 'sk_T8BYNEI4',
+                                      flags: YoutubePlayerFlags(
+                                        autoPlay: false,
+                                        mute: false,
+
+                                      ),
+
+                                    ),
+
+                                    showVideoProgressIndicator: true,
                                   ),
                                 ),
                                 Align(
