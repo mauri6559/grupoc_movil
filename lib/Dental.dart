@@ -12,6 +12,7 @@ import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class DentalWidget extends StatefulWidget {
@@ -23,27 +24,64 @@ class DentalWidget extends StatefulWidget {
 final emailController = TextEditingController();
 final messageController = TextEditingController();
 
+bool esCorreoValido(String correo) {
+  final regExp = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+  return regExp.hasMatch(correo);
+}
+
 Future sendEmail() async{
   final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
   const serviceId = "service_cebjusa";
   const templateId = "template_o2kvhsd";
   const userId = "DkM-oXCqIYVAkEg3E";
   const to_email = "mauriciogarciam9@gmail.com";
+  // Validar dirección de correo electrónico
+  if (!esCorreoValido(emailController.text)) {
+    // Muestra un toast rojo indicando que la dirección de correo es inválida
+    Fluttertoast.showToast(
+        msg: "Correo electrónico no válido",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
+    return;
+  }
   final response = await http.post(url,
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         "service_id": serviceId,
         "template_id": templateId,
         "user_id": userId,
-        "template_params":{
-          //"name": nameController.text,
-          //"subject": subjectController.text,
+        "template_params": {
           "to_email": to_email,
           "message": messageController.text,
           "user_email": emailController.text,
         }
-      })
-  );
+      }));
+
+  // Verifica que el correo se haya enviado correctamente
+  if (response.statusCode == 200) {
+    // Borra los campos después de enviar el correo
+    emailController.clear();
+    messageController.clear();
+
+    // Muestra un toast verde indicando que el correo se envió correctamente
+    Fluttertoast.showToast(
+        msg: "Correo enviado correctamente",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white);
+  } else {
+    // Muestra un toast rojo indicando que hubo un problema al enviar el correo
+    Fluttertoast.showToast(
+        msg: "Error al enviar el correo",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
+  }
+
   return print(response.statusCode);
 }
 
