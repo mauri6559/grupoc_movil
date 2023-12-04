@@ -7,6 +7,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -36,32 +37,51 @@ Future sendEmail() async{
 
   // Validar dirección de correo electrónico
   if (!esCorreoValido(emailController.text)) {
-    // Manejar el caso de un correo electrónico no válido según tus necesidades
-    print('Correo electrónico no válido');
+    // Muestra un toast rojo indicando que la dirección de correo es inválida
+    Fluttertoast.showToast(
+        msg: "Correo electrónico no válido",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
     return;
   }
-
   final response = await http.post(url,
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         "service_id": serviceId,
         "template_id": templateId,
         "user_id": userId,
-        "template_params":{
-          //"name": nameController.text,
-          //"subject": subjectController.text,
+        "template_params": {
           "to_email": to_email,
           "message": messageController.text,
           "user_email": emailController.text,
         }
-      })
-  );
+      }));
+
   // Verifica que el correo se haya enviado correctamente
   if (response.statusCode == 200) {
     // Borra los campos después de enviar el correo
     emailController.clear();
     messageController.clear();
+
+    // Muestra un toast verde indicando que el correo se envió correctamente
+    Fluttertoast.showToast(
+        msg: "Correo enviado correctamente",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white);
+  } else {
+    // Muestra un toast rojo indicando que hubo un problema al enviar el correo
+    Fluttertoast.showToast(
+        msg: "Error al enviar el correo",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
   }
+
   return print(response.statusCode);
 }
 //todo es para la parte de correo
@@ -137,482 +157,500 @@ class _medicoWidgetState extends State<medicoWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   //banner
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 10),
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: Color(0xFFB22A2A),
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                'assets/imamarvel/medicofotor.jpg',
-                                width: 300,
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  //servicios
                   Container(
-                    width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.3,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Column(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'SERVICIOS',
-                            style: TextStyle(
-                              color: Colors.black, // Cambia el color a azul (puedes usar cualquier otro color)
-                              fontSize: 24, // Tamaño de la fuente
-                              fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              buildServiceCard(
-                                  context,
-                                  'assets/imamarvel/medrevision.jpg',
-                                  'Revision Medica',
-                                  '\t\t● EXAMEN FISICO'
-                                      '\n⨀ Evaluación de signos vitales.'
-                                      '\n\n⨀ Exploración de sistemas corporales.'
-                                      '\n\n⨀ Medición de parámetros físicos (peso, altura, etc.).'
-                                      '\n\n\t\t● AJUSTES Y TRATAMIENTO'
-                                      '\n⨀ Recomendaciones inmediatas para problemas detectados.'
-                                      '\n\n⨀ Prescripción de medicamentos, si es necesario.'
-                                      '\n\n⨀ Instrucciones para cambios en el estilo de vida.'
-                                      '\n\n\t\t● PLANIFICACION DE SEGUIMIENTO'
-                                      '\n⨀ Establecimiento de citas de seguimiento.'
-                                      '\n\n⨀ Diseño de un plan a largo plazo para el mantenimiento de la salud.'
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 10),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Color(0xFFB22A2A),
+                              elevation: 4,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imamarvel/medanamnesis.jpg',
-                                  'Anamnesis',
-                                  '\t\t● Recopilación detallada de historial médico.'
-                                      '\n\n\t\t● Obtención de información sobre la salud pasada, presente y antecedentes médicos.'
-                                      '\n\n\t\t● Identificación de factores de riesgo y patrones de salud.'
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imamarvel/meddiagnostico.jpg',
-                                  'Diagnostico',
-                                  '\t\t● Utilización de la anamnesis para comprender la historia médica del estudiante.'
-                                      '\n\n\t\t● Realización de exámenes físicos.'
-                                      '\n\n\t\t● Consideración de pruebas adicionales si es necesario.'
-                                      '\n\n\t\t● Identificación de la causa subyacente de los síntomas o problemas de salud.'
-                              ),
-                              buildServiceCard(
-                                  context,
-                                  'assets/imamarvel/medambulatorio.jpg',
-                                  'Tratamiento Ambulatorio',
-                                  '\t\t● RECOMENDACIÓN DE AUTOCUIDADOS'
-                                      '\n⨀ Instrucciones para el manejo de síntomas en casa.'
-                                      '\n\n⨀ Consejos para la prevención de enfermedades.'
-                                      '\n\n\t\t● ASESORAMIENTO SOBRE CAMBIOS EN EL ESTILO DE VIDA'
-                                      '\n⨀ Modificaciones en la dieta y el ejercicio.'
-                                      '\n\n⨀ Estrategias para mejorar la salud general.'
-                                      '\n\n\t\t● SEGUIMIENTO CON ESPECIALISTAS'
-                                      '\n⨀ Referencias a especialistas según sea necesario.'
-                                      '\n\n⨀ Coordinación de la atención multidisciplinaria.'
-                                      '\n\n\t\t● INTEGRACIÓN DEL TRATAMIENTO'
-                                      '\n⨀ Facilitación de la atención médica dentro del entorno universitario.'
-                                      '\n\n⨀ Consideración de la conveniencia para adaptarse a la rutina académica del estudiante.'
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  //horarios
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.3,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.asset(
-                              'assets/images/FONDOG.jpg',
-                            ).image,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'HORARIOS',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                  ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.asset(
+                                  'assets/imamarvel/medicofotor.jpg',
+                                  width: 300,
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: Align(
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  //servicios
+                  Container(
+                    margin: EdgeInsets.only(bottom: 2),
+                    child: Container(
+                      width: double.infinity,
+                      height: MediaQuery.sizeOf(context).height * 0.3,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Text(
+                              'SERVICIOS',
+                              style: TextStyle(
+                                color: Colors.black, // Cambia el color a azul (puedes usar cualquier otro color)
+                                fontSize: 24, // Tamaño de la fuente
+                                fontWeight: FontWeight.bold, // Puedes ajustar el peso de la fuente
+                              ),
+                            ),
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                buildServiceCard(
+                                    context,
+                                    'assets/imamarvel/medrevision.jpg',
+                                    'Revision Medica',
+                                    '\t\t● EXAMEN FISICO'
+                                        '\n⨀ Evaluación de signos vitales.'
+                                        '\n\n⨀ Exploración de sistemas corporales.'
+                                        '\n\n⨀ Medición de parámetros físicos (peso, altura, etc.).'
+                                        '\n\n\t\t● AJUSTES Y TRATAMIENTO'
+                                        '\n⨀ Recomendaciones inmediatas para problemas detectados.'
+                                        '\n\n⨀ Prescripción de medicamentos, si es necesario.'
+                                        '\n\n⨀ Instrucciones para cambios en el estilo de vida.'
+                                        '\n\n\t\t● PLANIFICACION DE SEGUIMIENTO'
+                                        '\n⨀ Establecimiento de citas de seguimiento.'
+                                        '\n\n⨀ Diseño de un plan a largo plazo para el mantenimiento de la salud.'
+                                ),
+                                buildServiceCard(
+                                    context,
+                                    'assets/imamarvel/medanamnesis.jpg',
+                                    'Anamnesis',
+                                    '\t\t● Recopilación detallada de historial médico.'
+                                        '\n\n\t\t● Obtención de información sobre la salud pasada, presente y antecedentes médicos.'
+                                        '\n\n\t\t● Identificación de factores de riesgo y patrones de salud.'
+                                ),
+                                buildServiceCard(
+                                    context,
+                                    'assets/imamarvel/meddiagnostico.jpg',
+                                    'Diagnostico',
+                                    '\t\t● Utilización de la anamnesis para comprender la historia médica del estudiante.'
+                                        '\n\n\t\t● Realización de exámenes físicos.'
+                                        '\n\n\t\t● Consideración de pruebas adicionales si es necesario.'
+                                        '\n\n\t\t● Identificación de la causa subyacente de los síntomas o problemas de salud.'
+                                ),
+                                buildServiceCard(
+                                    context,
+                                    'assets/imamarvel/medambulatorio.jpg',
+                                    'Tratamiento Ambulatorio',
+                                    '\t\t● RECOMENDACIÓN DE AUTOCUIDADOS'
+                                        '\n⨀ Instrucciones para el manejo de síntomas en casa.'
+                                        '\n\n⨀ Consejos para la prevención de enfermedades.'
+                                        '\n\n\t\t● ASESORAMIENTO SOBRE CAMBIOS EN EL ESTILO DE VIDA'
+                                        '\n⨀ Modificaciones en la dieta y el ejercicio.'
+                                        '\n\n⨀ Estrategias para mejorar la salud general.'
+                                        '\n\n\t\t● SEGUIMIENTO CON ESPECIALISTAS'
+                                        '\n⨀ Referencias a especialistas según sea necesario.'
+                                        '\n\n⨀ Coordinación de la atención multidisciplinaria.'
+                                        '\n\n\t\t● INTEGRACIÓN DEL TRATAMIENTO'
+                                        '\n⨀ Facilitación de la atención médica dentro del entorno universitario.'
+                                        '\n\n⨀ Consideración de la conveniencia para adaptarse a la rutina académica del estudiante.'
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ),
+                  //horarios
+                  Container(
+                    margin: EdgeInsets.only(bottom: 23),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding:
+                        EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).rojo2,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.asset(
+                                'assets/images/FONDOG.jpg',
+                              ).image,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
-                                  child: GridView(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      crossAxisSpacing: 1,
-                                      mainAxisSpacing: 1,
-                                      childAspectRatio: 1,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 10, 10, 0),
+                                  child: Text(
+                                    'HORARIOS DE ATENCION',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .blanco,
                                     ),
-                                    scrollDirection: Axis.vertical,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
+                                    child: GridView(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 1,
+                                        mainAxisSpacing: 1,
+                                        childAspectRatio: 1,
+                                      ),
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        Align(
+                                          alignment: AlignmentDirectional(0.00, 0.00),
+                                          child: Text(
+                                            'Lunes a viernes',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                              fontFamily: 'Outfit',
+                                              color: FlutterFlowTheme.of(context).blanco,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: AlignmentDirectional(0.00, 0.00),
+                                          child: Text(
+                                            '8:00 AM  -',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              fontFamily: 'Readex Pro',
+                                              color: FlutterFlowTheme.of(context).blanco,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: AlignmentDirectional(0.00, 0.00),
+                                          child: Text(
+                                            '18:00 PM',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              fontFamily: 'Readex Pro',
+                                              color: FlutterFlowTheme.of(context).blanco,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: AlignmentDirectional(0.00, 0.00),
+                                          child: Text(
+                                            'Sabado',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                              fontFamily: 'Outfit',
+                                              color: FlutterFlowTheme.of(context).blanco,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: AlignmentDirectional(0.00, 0.00),
+                                          child: Text(
+                                            '8:00 AM  -',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              fontFamily: 'Readex Pro',
+                                              color: FlutterFlowTheme.of(context).blanco,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: AlignmentDirectional(0.00, 0.00),
+                                          child: Text(
+                                            '12:00 PM',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              fontFamily: 'Readex Pro',
+                                              color: FlutterFlowTheme.of(context).blanco,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ),
+                  //ubicacion
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Align(
+                      child: Padding(
+                        padding:
+                        EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.sizeOf(context).height * 0.36,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).rojo2,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 10, 10, 0),
+                                  child: Text(
+                                    'UBICANOS',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .blanco,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              YoutubePlayer(
+                                controller: YoutubePlayerController(
+                                  initialVideoId: 'xl9jgQkuaRE', // Solo el ID del video
+                                  flags: YoutubePlayerFlags(
+                                    autoPlay: false,
+                                    mute: false,
+                                  ),
+                                ),
+                                showVideoProgressIndicator: true,
+                                progressColors: ProgressBarColors(
+                                  playedColor: Colors.amber, // Color de la barra de progreso reproducido
+                                  handleColor: Colors.amberAccent, // Color del manipulador de progreso
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Padding(
+
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 10, 10, 0),
+                                  child: Text(
+
+                                    'Piso 1 - Torre Antigua',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .blanco,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ),
+                  //contactanos
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child:Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding:
+                        EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.sizeOf(context).height * 0.4,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).rojo2,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              //TODO contactanos parte
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
+                                child: Form(
+                                  child: Column(
                                     children: [
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          'Lunes a viernes',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).titleLarge.override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                      Text(
+                                        '¡ENVIANOS TU DUDA!',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '8:00 AM  -',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
+                                      Padding(padding: const EdgeInsets.only(bottom: 15)),
+                                      TextFormField(
+                                        controller: emailController,
+                                        decoration: InputDecoration(
+                                          icon: const Icon(Icons.email, color: Colors.white), // Color del icono
+                                          hintText: 'Ingrese su Correo',
+                                          labelText: 'Ingrese su Correo',
+                                          labelStyle: TextStyle(color: Colors.white),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
                                           ),
                                         ),
+                                        style: TextStyle(color: Colors.white),
                                       ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '18:00 PM',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
+                                      SizedBox(
+                                        height: 25,
+                                      ),
+                                      TextFormField(
+                                        controller: messageController,
+                                        decoration: InputDecoration(
+                                          icon: const Icon(Icons.message, color: Colors.white), // Color del icono
+                                          hintText: 'Ingrese su mensaje',
+                                          labelText: 'Ingrese su mensaje',
+                                          labelStyle: TextStyle(color: Colors.white),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
                                           ),
                                         ),
+                                        style: TextStyle(color: Colors.white),
                                       ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          'Sabado',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).titleLarge.override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          sendEmail();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.amber, // Color del fondo del botón
                                         ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
                                         child: Text(
-                                          '8:00 AM  -',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                          "Enviar",
+                                          style: TextStyle(fontSize: 20, color: Colors.white),
                                         ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ),
+                  //APARTADO DE MAS INFORMACION
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.sizeOf(context).height * 0.16,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).rojo2, // Cambia al color guindo deseado
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.5, 0.0), // Centra horizontalmente
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                                  child: Text(
+                                    'EMERGENCIAS HOSPITAL ARCOIRIS',
+                                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context).blanco,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10), // Reduje el espacio entre el título y el número
+                              GestureDetector(
+                                onTap: () => _launchPhoneCall('77544444'),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white, // Puedes ajustar el color de fondo
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  padding: EdgeInsets.all(10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.phone,
+                                        color: FlutterFlowTheme.of(context).rojo2, // Cambia al color guindo deseado
                                       ),
-                                      Align(
-                                        alignment: AlignmentDirectional(0.00, 0.00),
-                                        child: Text(
-                                          '12:00 PM',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context).blanco,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                      SizedBox(width: 5), // Reduje el espacio entre el icono y el número
+                                      Text(
+                                        '77544444', // Reemplaza con tu número de teléfono real
+                                        style: TextStyle(
+                                          fontSize: 20.0, // Reduje el tamaño del número
+                                          color: FlutterFlowTheme.of(context).rojo2, // Cambia al color guindo deseado
+                                          fontWeight: FontWeight.bold,
+                                          decoration: TextDecoration.underline,
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  //ubicacion
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.35,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'UBICACION',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            YoutubePlayer(
-                              controller: YoutubePlayerController(
-                                initialVideoId: 'kzAXMSJQOPs', // Solo el ID del video
-                                flags: YoutubePlayerFlags(
-                                  autoPlay: false,
-                                  mute: false,
-                                ),
-                              ),
-                              showVideoProgressIndicator: true,
-                              progressColors: ProgressBarColors(
-                                playedColor: Colors.amber, // Color de la barra de progreso reproducido
-                                handleColor: Colors.amberAccent, // Color del manipulador de progreso
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-
-                                  'Piso 1 - Torre Antigua',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  //contactanos
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.4,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            //TODO contactanos parte
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
-                              child: Form(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'CONTACTANOS',
-                                      style: TextStyle(
-                                        fontSize: 30,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Padding(padding: const EdgeInsets.only(bottom: 15)),
-                                    TextFormField(
-                                      controller: emailController,
-                                      decoration: InputDecoration(
-                                        icon: const Icon(Icons.email, color: Colors.white), // Color del icono
-                                        hintText: 'Email',
-                                        labelText: 'Email',
-                                        labelStyle: TextStyle(color: Colors.white),
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
-                                        ),
-                                      ),
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    SizedBox(
-                                      height: 25,
-                                    ),
-                                    TextFormField(
-                                      controller: messageController,
-                                      decoration: InputDecoration(
-                                        icon: const Icon(Icons.message, color: Colors.white), // Color del icono
-                                        hintText: 'Message',
-                                        labelText: 'Message',
-                                        labelStyle: TextStyle(color: Colors.white),
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
-                                        ),
-                                      ),
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        sendEmail();
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.amber, // Color del fondo del botón
-                                      ),
-                                      child: Text(
-                                        "Enviar",
-                                        style: TextStyle(fontSize: 20, color: Colors.white),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  //APARTADO DE MAS INFORMACION
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.16,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2, // Cambia al color guindo deseado
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.5, 0.0), // Centra horizontalmente
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
-                                child: Text(
-                                  'EMERGENCIAS HOSPITAL ARCOIRIS',
-                                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context).blanco,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10), // Reduje el espacio entre el título y el número
-                            GestureDetector(
-                              onTap: () => _launchPhoneCall('77544444'),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white, // Puedes ajustar el color de fondo
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                padding: EdgeInsets.all(10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.phone,
-                                      color: FlutterFlowTheme.of(context).rojo2, // Cambia al color guindo deseado
-                                    ),
-                                    SizedBox(width: 5), // Reduje el espacio entre el icono y el número
-                                    Text(
-                                      '77544444', // Reemplaza con tu número de teléfono real
-                                      style: TextStyle(
-                                        fontSize: 20.0, // Reduje el tamaño del número
-                                        color: FlutterFlowTheme.of(context).rojo2, // Cambia al color guindo deseado
-                                        fontWeight: FontWeight.bold,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    )
                   ),
                 ],
               ),
