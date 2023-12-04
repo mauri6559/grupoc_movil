@@ -10,6 +10,7 @@ import 'src/flutter_flow/flutter_flow_theme.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class NafWidget extends StatefulWidget {
 
@@ -20,6 +21,8 @@ class NafWidget extends StatefulWidget {
 //final subjectController = TextEditingController();
 final emailController = TextEditingController();
 final messageController = TextEditingController();
+
+void showToastMessage(String message) => Fluttertoast.showToast(msg: message);
 
 Future sendEmail() async{
   final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
@@ -42,8 +45,14 @@ Future sendEmail() async{
       }
     })
   );
+  if(response.statusCode == 200){
+    showToastMessage("Mensaje enviado correctamente");
+  }
   return print(response.statusCode);
+
 }
+
+
 
 YoutubePlayerController _controller = YoutubePlayerController(
   initialVideoId: 'sk_T8BYNEI4',
@@ -678,6 +687,7 @@ Mantente al tanto de las facilidades de pago que existen
                               ElevatedButton(
                                 onPressed: () {
                                   sendEmail();
+
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: FlutterFlowTheme.of(context).rojo2,
