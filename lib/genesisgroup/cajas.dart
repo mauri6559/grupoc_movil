@@ -481,7 +481,7 @@ class _cajasWidgetState extends State<cajasWidget> {
                       EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
                       child: Container(
                         width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.4,
+                        height: MediaQuery.sizeOf(context).height * 0.45,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).rojo2,
                           borderRadius: BorderRadius.circular(20),
@@ -554,12 +554,23 @@ class _cajasWidgetState extends State<cajasWidget> {
                                         "Enviar",
                                         style: TextStyle(fontSize: 20, color: Colors.white),
                                       ),
-                                    )
+                                    ),
+                                    SizedBox(height: 15), // Espacio entre el botón y el mensaje adicional
+                                    Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Este mensaje sera enviado al encargado del area de cajas.',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
-
                           ],
                         ),
                       ),

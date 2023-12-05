@@ -217,7 +217,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                               children: [
                                 buildServiceCard(
                                   context,
-                                  'assets/imamarvel/psiasesor.jpg',
+                                  'assets/imamarvel/psiasesora.png',
                                   'Asesoramiento',
                                   '\n● Sesiones de apoyo emocional.'
                                       '\n\n● Evaluación de necesidades específicas de cada estudiante.'
@@ -225,7 +225,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                 ),
                                 buildServiceCard(
                                   context,
-                                  'assets/imamarvel/psiintervencion.jpg',
+                                  'assets/imamarvel/psiintergrup.png',
                                   'Intervención Grupal',
                                   '\n● Talleres de estrategias de aprendizaje.'
                                       '\n\n● Talleres de autorregulación emocional.'
@@ -511,7 +511,7 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                         EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
                         child: Container(
                           width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.4,
+                          height: MediaQuery.sizeOf(context).height * 0.45,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).rojo2,
                             borderRadius: BorderRadius.circular(20),
@@ -583,7 +583,19 @@ class _psicoloWidgetState extends State<psicoloWidget> {
                                           "Enviar",
                                           style: TextStyle(fontSize: 20, color: Colors.white),
                                         ),
-                                      )
+                                      ),
+                                      SizedBox(height: 15), // Espacio entre el botón y el mensaje adicional
+                                      Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          'Este mensaje sera enviado al encargado del gabinete psicologico.',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),

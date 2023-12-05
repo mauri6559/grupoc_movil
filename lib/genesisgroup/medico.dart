@@ -217,7 +217,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                               children: [
                                 buildServiceCard(
                                     context,
-                                    'assets/imamarvel/medrevision.jpg',
+                                    'assets/imamarvel/medrevimedi.png',
                                     'Revision Medica',
                                     '\t\t● EXAMEN FISICO'
                                         '\n⨀ Evaluación de signos vitales.'
@@ -250,7 +250,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                                 ),
                                 buildServiceCard(
                                     context,
-                                    'assets/imamarvel/medambulatorio.jpg',
+                                    'assets/imamarvel/medambul.png',
                                     'Tratamiento Ambulatorio',
                                     '\t\t● RECOMENDACIÓN DE AUTOCUIDADOS'
                                         '\n⨀ Instrucciones para el manejo de síntomas en casa.'
@@ -502,7 +502,7 @@ class _medicoWidgetState extends State<medicoWidget> {
                         EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
                         child: Container(
                           width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.4,
+                          height: MediaQuery.sizeOf(context).height * 0.45,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).rojo2,
                             borderRadius: BorderRadius.circular(20),
@@ -574,7 +574,19 @@ class _medicoWidgetState extends State<medicoWidget> {
                                           "Enviar",
                                           style: TextStyle(fontSize: 20, color: Colors.white),
                                         ),
-                                      )
+                                      ),
+                                      SizedBox(height: 15), // Espacio entre el botón y el mensaje adicional
+                                      Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          'Este mensaje sera enviado al encargado de gabinete medicico.',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
