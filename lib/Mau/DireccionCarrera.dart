@@ -5,7 +5,10 @@ import 'package:sistema_de_informacion/dashboard_page.dart';
 import 'package:sistema_de_informacion/qr_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_image/flutter_image.dart';
-
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../genesisgroup/cajas.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -18,32 +21,72 @@ class DireccionCarreraWidget extends StatefulWidget {
   State<DireccionCarreraWidget> createState() => _DireccionCarreraWidgetState();
 }
 
+//todo es para la parte de correo
 final emailController = TextEditingController();
 final messageController = TextEditingController();
+
+bool esCorreoValido(String correo) {
+  final regExp = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+  return regExp.hasMatch(correo);
+}
 
 Future sendEmail() async{
   final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
   const serviceId = "service_cebjusa";
   const templateId = "template_o2kvhsd";
   const userId = "DkM-oXCqIYVAkEg3E";
-  const to_email = "mauriciogarciam9@gmail.com";
+  const to_email = "soriamarvel8@gmail.com";
+
+  // Validar dirección de correo electrónico
+  if (!esCorreoValido(emailController.text)) {
+    // Muestra un toast rojo indicando que la dirección de correo es inválida
+    Fluttertoast.showToast(
+        msg: "Correo electrónico no válido",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
+    return;
+  }
   final response = await http.post(url,
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         "service_id": serviceId,
         "template_id": templateId,
         "user_id": userId,
-        "template_params":{
-          //"name": nameController.text,
-          //"subject": subjectController.text,
+        "template_params": {
           "to_email": to_email,
           "message": messageController.text,
           "user_email": emailController.text,
         }
-      })
-  );
+      }));
+
+  // Verifica que el correo se haya enviado correctamente
+  if (response.statusCode == 200) {
+    // Borra los campos después de enviar el correo
+    emailController.clear();
+    messageController.clear();
+
+    // Muestra un toast verde indicando que el correo se envió correctamente
+    Fluttertoast.showToast(
+        msg: "Correo enviado correctamente",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white);
+  } else {
+    // Muestra un toast rojo indicando que hubo un problema al enviar el correo
+    Fluttertoast.showToast(
+        msg: "Error al enviar el correo",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
+  }
+
   return print(response.statusCode);
 }
+//todo es para la parte de correo
 class _DireccionCarreraWidgetState extends State<DireccionCarreraWidget> {
   List pages = [
     Dashboard(),
@@ -60,6 +103,11 @@ class _DireccionCarreraWidgetState extends State<DireccionCarreraWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // Bloquea la rotación horizontal del video
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]);
     return GestureDetector(
         child: Scaffold(
           appBar: AppBar(
@@ -373,115 +421,183 @@ class _DireccionCarreraWidgetState extends State<DireccionCarreraWidget> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                      EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.sizeOf(context).height * 0.3,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).rojo2,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'UBICACION',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
+                  Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Align(
+                        child: Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(10, 0, 10, 20),
+                          child: Container(
+                            width: double.infinity,
+                            height: MediaQuery.sizeOf(context).height * 0.36,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).rojo2,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 10, 10, 0),
+                                    child: Text(
+                                      'UBICANOS',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                        fontFamily: 'Outfit',
+                                        color: FlutterFlowTheme.of(context)
+                                            .blanco,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
-                              child: Image.asset(
-                                'assets/images/maps.png',
-                                width: 342,
-                                height: MediaQuery.sizeOf(context).height *
-                                    0.176,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 0),
-                                child: Text(
-                                  'PISO NRO 2  TORRE B',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .blanco,
-                                    fontSize: 30,
+                                YoutubePlayer(
+                                  controller: YoutubePlayerController(
+                                    initialVideoId: '0CwHtz2wGx4', // Solo el ID del video
+                                    flags: YoutubePlayerFlags(
+                                      autoPlay: false,
+                                      mute: false,
+                                    ),
+                                  ),
+                                  showVideoProgressIndicator: true,
+                                  progressColors: ProgressBarColors(
+                                    playedColor: Colors.amber, // Color de la barra de progreso reproducido
+                                    handleColor: Colors.amberAccent, // Color del manipulador de progreso
                                   ),
                                 ),
-                              ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Padding(
+
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 10, 10, 0),
+                                    child: Text(
+
+                                      'Piso 5 - Torre Innovacion',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                        fontFamily: 'Outfit',
+                                        color: FlutterFlowTheme.of(context)
+                                            .blanco,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      )
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
-                    child: Form(
-                      child: Column(
-                        children: [
-                          Text(
-                            'Contactanos',
-                            style: TextStyle(fontSize: 25),
-                          ),
-                          Padding(padding: const EdgeInsets.only(bottom: 15)),
-                          TextFormField(
-                            controller: emailController,
-                            decoration: const InputDecoration(
-                              icon: const Icon(Icons.email),
-                              hintText: 'Email',
-                              labelText: 'Email',
+                  Container(
+                      margin: EdgeInsets.only(bottom: 15),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
+                          child: Container(
+                            width: double.infinity,
+                            height: MediaQuery.sizeOf(context).height * 0.45,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).rojo2,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                //TODO contactanos parte
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(25.0, 40, 25, 0),
+                                  child: Form(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '¡ENVIANOS TU DUDA!',
+                                          style: TextStyle(
+                                            fontSize: 30,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Padding(padding: const EdgeInsets.only(bottom: 15)),
+                                        TextFormField(
+                                          controller: emailController,
+                                          decoration: InputDecoration(
+                                            icon: const Icon(Icons.email, color: Colors.white), // Color del icono
+                                            hintText: 'Ingrese su Correo',
+                                            labelText: 'Ingrese su Correo',
+                                            labelStyle: TextStyle(color: Colors.white),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
+                                            ),
+                                          ),
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 25,
+                                        ),
+                                        TextFormField(
+                                          controller: messageController,
+                                          decoration: InputDecoration(
+                                            icon: const Icon(Icons.message, color: Colors.white), // Color del icono
+                                            hintText: 'Ingrese su mensaje',
+                                            labelText: 'Ingrese su mensaje',
+                                            labelStyle: TextStyle(color: Colors.white),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(color: Colors.white), // Color de la línea inferior
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(color: Colors.white), // Color de la línea inferior cuando está enfocado
+                                            ),
+                                          ),
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            sendEmail();
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.amber, // Color del fondo del botón
+                                          ),
+                                          child: Text(
+                                            "Enviar",
+                                            style: TextStyle(fontSize: 20, color: Colors.white),
+                                          ),
+                                        ),
+                                        SizedBox(height: 15), // Espacio entre el botón y el mensaje adicional
+                                        Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            'Este mensaje sera enviado al encargado de direccion de carrera de la universidad.',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextFormField(
-                            controller: messageController,
-                            decoration: const InputDecoration(
-                              icon: const Icon(Icons.message),
-                              hintText: 'Message',
-                              labelText: 'Message',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              sendEmail();
-                            },
-                            child: Text(
-                              "Enviar",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                        ),
+                      )
                   ),
                 ],
               ),
@@ -543,11 +659,14 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
               SizedBox(height: 8),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 8),
-                child: Text(
-                  serviceName,
-                  style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
-                    color: FlutterFlowTheme.of(context).blanco,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    serviceName,
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                      fontFamily: 'Outfit',
+                      color: FlutterFlowTheme.of(context).blanco,
+                    ),
                   ),
                 ),
               ),
@@ -558,6 +677,7 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
     ),
   );
 }
+
 //crea una pantalla nueva para mostrar informacion mas a detalle de los cards personalizados
 class ServiceDetailsScreen extends StatelessWidget {
   final String imageUrl;
@@ -573,83 +693,73 @@ class ServiceDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 45, 45, 54),
-        iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
-        automaticallyImplyLeading: true,
-        actions: [],
-        flexibleSpace: FlexibleSpaceBar(
-          background: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(0),
-              child: Image.asset(
-                'assets/imgenesis/banner.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height * 0.13,
-        elevation: 115,
-      ),
-      backgroundColor: Color.fromARGB(255, 161, 0, 71),
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 161, 0, 71),
-                Color.fromARGB(255, 45, 45, 54),
-              ],
-            ),
-          ),
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                    ),
-                  ],
-                ),
-                child: Image.asset(
-                  imageUrl,
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Color.fromARGB(255, 45, 45, 54),
+            expandedHeight: MediaQuery.of(context).size.height * 0.4,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
                 serviceName,
                 style: TextStyle(
-                  fontSize: 24.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
-              Text(
-                serviceDetails,
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
+              background: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
+                ),
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
                 ),
               ),
-              // Agrega más contenido de detalles si es necesario
-            ],
+            ),
           ),
-        ),
+          SliverToBoxAdapter(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromARGB(255, 161, 0, 71),
+                    Color.fromARGB(255, 45, 45, 54),
+                  ],
+                ),
+              ),
+              height: MediaQuery.of(context).size.height, // Ajusta la altura para que ocupe toda la pantalla
+              padding: EdgeInsets.all(16.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 7.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 8),
+                      Text(
+                        serviceDetails,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      // Puedes agregar más contenido si es necesario
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

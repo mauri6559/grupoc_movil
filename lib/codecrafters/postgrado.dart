@@ -625,8 +625,6 @@ class _postgradoWidgetState extends State<postgradoWidget> {
 }
 
 
-
-//aca creo todos los cards para poder personalizarlo de manera individual
 Widget buildServiceCard(BuildContext context, String imageUrl, String serviceName, String serviceDetails) {
   return Align(
     alignment: AlignmentDirectional(0.00, 0.00),
@@ -679,11 +677,14 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
               SizedBox(height: 8),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 8),
-                child: Text(
-                  serviceName,
-                  style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
-                    color: FlutterFlowTheme.of(context).blanco,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    serviceName,
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                      fontFamily: 'Outfit',
+                      color: FlutterFlowTheme.of(context).blanco,
+                    ),
                   ),
                 ),
               ),
@@ -694,7 +695,6 @@ Widget buildServiceCard(BuildContext context, String imageUrl, String serviceNam
     ),
   );
 }
-
 
 //crea una pantalla nueva para mostrar informacion mas a detalle de los cards personalizados
 class ServiceDetailsScreen extends StatelessWidget {
@@ -711,81 +711,73 @@ class ServiceDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 45, 45, 54),
-        iconTheme: IconThemeData(color: Color(0xFFFEFEFE)),
-        automaticallyImplyLeading: true,
-        actions: [],
-        flexibleSpace: FlexibleSpaceBar(
-          background: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(0),
-              child: Image.asset(
-                'assets/imgenesis/banner.png',
-                fit: BoxFit.cover,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Color.fromARGB(255, 45, 45, 54),
+            expandedHeight: MediaQuery.of(context).size.height * 0.4,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                serviceName,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              background: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
+                ),
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height * 0.13,
-        elevation: 115,
-      ),
-      backgroundColor: Color.fromARGB(255, 161, 0, 71),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 161, 0, 71),
-              Color.fromARGB(255, 45, 45, 54),
-            ],
-          ),
-        ),
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
+          SliverToBoxAdapter(
+            child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    spreadRadius: 3,
-                    blurRadius: 7,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromARGB(255, 161, 0, 71),
+                    Color.fromARGB(255, 45, 45, 54),
+                  ],
+                ),
+              ),
+              height: MediaQuery.of(context).size.height, // Ajusta la altura para que ocupe toda la pantalla
+              padding: EdgeInsets.all(16.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 7.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 8),
+                      Text(
+                        serviceDetails,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      // Puedes agregar más contenido si es necesario
+                    ],
                   ),
-                ],
-              ),
-              child: Image.asset(
-                imageUrl,
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.5,
-                fit: BoxFit.cover,
+                ),
               ),
             ),
-            SizedBox(height: 16),
-            Text(
-              serviceName,
-              style: TextStyle(
-                fontSize: 24.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              serviceDetails,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
-            ),
-            // Agrega más contenido de detalles si es necesario
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
